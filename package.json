@@ -1,0 +1,45 @@
+{
+	"name": "harmim",
+	"version": "1.0.0",
+	"description": "Dominik Harmim personal website.",
+	"type": "project",
+	"keywords": [
+		"php",
+		"php7",
+		"nette-framework",
+		"personal-website",
+		"curriculum-vitae"
+	],
+	"homepage": "https://github.com/harmim/harmim",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/harmim/harmim.git"
+	},
+	"author": {
+		"name": "Dominik Harmim",
+		"email": "harmim6@gmail.com",
+		"url": "http://www.harmim.cz"
+	},
+	"contributors": [
+		{
+			"name": "Dominik Harmim",
+			"email": "harmim6@gmail.com",
+			"url": "http://www.harmim.cz"
+		}
+	],
+	"bugs": {
+		"url": "https://github.com/harmim/harmim/issues",
+		"email": "harmim6@gmail.com"
+	},
+	"dependencies": {
+		"grunt": "^1.0.3",
+		"grunt-cli": "^1.2.0",
+		"bower": "^1.8.4",
+		"grunt-contrib-clean": "^1.1.0",
+		"grunt-contrib-copy": "^1.0.0",
+		"grunt-contrib-cssmin": "^2.2.1",
+		"grunt-contrib-uglify-es": "^3.3.0",
+		"load-grunt-tasks": "^4.0.0"
+	}
+}

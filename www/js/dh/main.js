@@ -10,23 +10,23 @@
 				$('i.bottom-bar').toggleClass('bottom-transform');
 			});
 
-			$('.section, div#menu-options a').on('click', function () {
-				$('nav#theMenu').removeClass('menu-open');
+			$('.section, div.menu-options a').on('click', function () {
+				$('nav.theMenu').removeClass('menu-open');
 				$('i.top-bar').removeClass('top-transform');
 				$('i.middle-bar').removeClass('middle-transform');
 				$('i.bottom-bar').removeClass('bottom-transform');
 			});
 
-			$('div#menuToggle').on('click', function () {
-				$('div#menuToggle').toggleClass('active');
+			$('div.menuToggle').on('click', function () {
+				$('div.menuToggle').toggleClass('active');
 				$('body').toggleClass('body-push-toright');
-				$('nav#theMenu').toggleClass('menu-open');
+				$('nav.theMenu').toggleClass('menu-open');
 			});
 		}
 
 
 		function initSmoothScroll() {
-			$('div#menu-options, div#about-btn').find('a[href*=#]:not([href=#])').on('click', function () {
+			$('div.menu-options, div.about-btn-card-action').find('a[href*=#]:not([href=#])').on('click', function () {
 				if (
 					location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')
 					&& location.hostname === this.hostname
@@ -45,13 +45,13 @@
 		function initScrollToTop() {
 			$(window).on('scroll', function () {
 				if ($(this).scrollTop() >= 50) {
-					$('div#scrollup').addClass('animated flipInY').fadeIn(200);
+					$('div.scrollup').addClass('animated flipInY').fadeIn(200);
 				} else {
-					$('div#scrollup').fadeOut(200);
+					$('div.scrollup').fadeOut(200);
 				}
 			});
 
-			$('div#scrollup').on('click', function () {
+			$('div.scrollup').on('click', function () {
 				$("html, body").animate({scrollTop: 0}, 600);
 				return false;
 			});
@@ -144,58 +144,6 @@
 		// }
 
 
-		// function initVideoPlayAndClose() {
-		// 	$('#html-video').addClass('hidden');
-		// 	$('#play-btn').on('click', function () {
-		// 		var htmlVideo = '#html-video';
-		// 		var vCard = '#v-card';
-		// 		var playButtonHolder = '#button-holder';
-		// 		var playIcon = '#icon-play';
-		// 		$(playButtonHolder).addClass('middle');
-		// 		setTimeout(function () {
-		// 			$(vCard).addClass('hide-overflow');
-		// 			$('body').addClass('scale-effect');
-		// 			$(vCard).addClass('height-change');
-		// 		}, 600);
-		// 		setTimeout(function () {
-		// 			$(playIcon).hide();
-		// 			$(htmlVideo).removeClass('hidden');
-		// 			$(htmlVideo)[0].play();
-		// 			$('#play-btn').addClass('black');
-		// 		}, 1000);
-		// 	});
-		// 	$('#close-btn').on('click', function () {
-		// 		var htmlVideo = '#html-video';
-		// 		var vCard = '#v-card';
-		// 		var playButtonHolder = '#button-holder';
-		// 		var playIcon = '#icon-play';
-		// 		$('body').removeClass('scale-effect');
-		// 		setTimeout(function () {
-		// 			$(playIcon).show();
-		// 			$(playButtonHolder).removeClass('middle');
-		// 			$(vCard).removeClass('hide-overflow');
-		// 		}, 1000);
-		// 		$(vCard).removeClass('height-change');
-		// 		$(htmlVideo).addClass('hidden');
-		// 		$(htmlVideo)[0].pause();
-		// 		$('#play-btn').removeClass('black');
-		// 	});
-		// }
-
-
-		// function initMapsNormal() {
-		// 	var mapOptions = {
-		// 		zoom: 17, center: new google.maps.LatLng(51.5287352, -0.3817831),
-		// 		mapTypeId: google.maps.MapTypeId.ROADMAP, scrollwheel: false, disableDefaultUI: false
-		// 	};
-		// 	var myMap = new google.maps.Map(document.getElementById('myMap'), mapOptions);
-		// 	var normal = new MarkerWithLabel({
-		// 		position: myMap.getCenter(), icon: {path: google.maps.SymbolPath.CIRCLE, scale: 0}, map: myMap,
-		// 		labelAnchor: new google.maps.Point(10, 10), labelClass: "map-label", draggable: false
-		// 	});
-		// }
-
-
 		// function initMail() {
 		// 	$('form#contact-form').on('submit', function (e) {
 		// 		e.preventDefault();
@@ -224,8 +172,6 @@
 		// initPortfolio();
 		initSkills();
 		// initClientsSliders();
-		// initVideoPlayAndClose();
-		// initMapsNormal();
 		// initMail();
 	});
 
@@ -234,13 +180,13 @@
 		$('div#loading').fadeOut(500);
 
 		window.sr = ScrollReveal({reset: false});
-		const commonCards = '#port-add-icon, #map-card, .interest-icon-even, .interest-icon,' +
-			'.timeline-dot, .timeline-content, #add-more, #skills-card, #testimonials-card,' +
+		const commonCards = '#port-add-icon, .interest-icon-even, .interest-icon,' +
+			'.timeline-dot, .timeline-content, #add-more, .skills-card, #testimonials-card,' +
 			'#portfolios-card, #interest-card, #p-one, #p-two, #p-three, #blog-card, #contact-card,' +
 			'#clients, .section-title img';
 
 		sr.reveal(commonCards, {duration: 1100});
-		sr.reveal('#about-card, .map-label', {duration: 1400, delay: 500});
+		sr.reveal('.about-card', {duration: 1400, delay: 500});
 		sr.reveal('#v-card-holder', {duration: 1400, distance: '150px'});
 		sr.reveal('.skillbar-bar', {duration: 1800, delay: 300, distance: '0'});
 	});

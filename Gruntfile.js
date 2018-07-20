@@ -28,19 +28,17 @@ module.exports = function (grunt) {
 			js: [
 				"<%= bowerDir %>/jquery/dist/jquery.js",
 				"<%= bowerDir %>/bootstrap/dist/js/bootstrap.js",
-				// "<%= bowerDir %>/materialize/dist/js/materialize.js",
-				"<%= bowerDir %>/retinajs/dist/retina.js",
 				"<%= bowerDir %>/scrollreveal/dist/scrollreveal.js",
-				// "<%= bowerDir %>/swiper/dist/js/swiper.jquery.js",
-				// "<%= bowerDir %>/magnific-popup/dist/jquery.magnific-popup.js",
+				"<%= bowerDir %>/swiper/dist/js/swiper.jquery.js",
+				"<%= bowerDir %>/magnific-popup/dist/jquery.magnific-popup.js",
 				"<%= jsDir %>/dh/main.js"
 			],
 			css: [
 				"<%= bowerDir %>/font-awesome/css/font-awesome.css",
 				"<%= bowerDir %>/animate.css/animate.css",
-				// "<%= bowerDir %>/magnific-popup/dist/magnific-popup.css",
-				// "<%= bowerDir %>/swiper/dist/css/swiper.css",
-				// "<%= bowerDir %>/materialize/dist/css/materialize.css",
+				"<%= bowerDir %>/magnific-popup/dist/magnific-popup.css",
+				"<%= bowerDir %>/swiper/dist/css/swiper.css",
+				"<%= stylesDir %>/dh/materialize.css",
 				"<%= bowerDir %>/bootstrap/dist/css/bootstrap.css",
 				"<%= stylesDir %>/dh/main.css"
 			]
@@ -80,7 +78,7 @@ module.exports = function (grunt) {
 			fonts: {
 				files: [
 					{src: "<%= bowerDir %>/font-awesome/fonts/*", dest: "<%= fontsDir %>", expand: true, flatten: true, filter: 'isFile'},
-					// {cwd: "<%= bowerDir %>/materialize/dist/font/", src: "./**", dest: "<%= fontsDir %>", expand: true},
+					{cwd: "<%= bowerDir %>/materialize/dist/font", src: "material-design-icons/**", dest: "<%= fontsDir %>", expand: true},
 					{src: "<%= bowerDir %>/bootstrap/dist/fonts/*", dest: "<%= fontsDir %>", expand: true, flatten: true}
 				]
 			}

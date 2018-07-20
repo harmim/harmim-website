@@ -35,18 +35,18 @@ endif
 .PHONY: bower
 bower:
 ifeq ($(PRODUCTION), 0)
-	node_modules/bower/bin/bower install
+	./node_modules/bower/bin/bower install
 else
-	node_modules/bower/bin/bower install --production
+	./node_modules/bower/bin/bower install --production
 endif
 
 
 .PHONY: grunt
 grunt:
 ifeq ($(PRODUCTION), 0)
-	node_modules/.bin/grunt development
+	./node_modules/.bin/grunt development
 else
-	node_modules/.bin/grunt production
+	./node_modules/.bin/grunt production
 endif
 
 
@@ -80,9 +80,9 @@ endif
 .PHONY: coding-standard-run
 coding-standard-run:
 ifeq ($(FIX), 0)
-	$(CODING_STANDARD_DIR)/ecs check app libs tools --config $(CODING_STANDARD_DIR)/coding-standard-php71.neon
+	./$(CODING_STANDARD_DIR)/ecs check app libs tools --config $(CODING_STANDARD_DIR)/coding-standard-php71.neon
 else
-	$(CODING_STANDARD_DIR)/ecs check app libs tools --config $(CODING_STANDARD_DIR)/coding-standard-php71.neon --fix
+	./$(CODING_STANDARD_DIR)/ecs check app libs tools --config $(CODING_STANDARD_DIR)/coding-standard-php71.neon --fix
 endif
 
 

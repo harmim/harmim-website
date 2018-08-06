@@ -59,12 +59,12 @@
 
 
 		// function initPortfolio() {
-		// 	var all = '#a, #b, #c';
-		// 	var afterFirst = '#b, #c';
-		// 	var addButton = '#add-more';
-		// 	var addButtonIcon = '#port-add-icon';
+		// 	var all = '#port-cat-a, #port-cat-b, #port-cat-c';
+		// 	var afterFirst = '#port-cat-b, #port-cat-c';
+		// 	var addButton = '.port-add-more';
+		// 	var addButtonIcon = '.port-add-icon';
 		// 	var otherOption = 'a.cate';
-		// 	var allOption = 'a#all-sample';
+		// 	var allOption = 'a#port-all-sample';
 		// 	$(afterFirst).addClass('hide');
 		// 	$(addButton).addClass('x');
 		// 	$(allOption).on('click', function () {
@@ -90,7 +90,7 @@
 		// 			$(addButtonIcon).addClass('fa-plus').removeClass('fa-arrow-up');
 		// 		}
 		// 	});
-		// 	$('li.list-shuffle, #add-more').on('click', function () {
+		// 	$('li.list-shuffle, .port-add-more').on('click', function () {
 		// 		$("div.inLeft").removeClass('InLeft').hide().addClass('InLeft').show();
 		// 		$("div.inRight").removeClass('InRight').hide().addClass('InRight').show();
 		// 	});
@@ -180,9 +180,9 @@
 		$('div#loading').fadeOut(500);
 
 		window.sr = ScrollReveal({reset: false});
-		const commonCards = '#port-add-icon, .interest-icon-even, .interest-icon,' +
-			'.timeline-dot, .timeline-content, #add-more, .skills-card, #testimonials-card,' +
-			'#portfolios-card, #interest-card, #p-one, #p-two, #p-three, #blog-card, #contact-card,' +
+		const commonCards = '.port-add-icon, .interest-icon-even, .interest-icon,' +
+			'.timeline-dot, .timeline-content, .port-add-more, .skills-card, #testimonials-card,' +
+			'.portfolios-card, .interest-card, #p-one, #p-two, #p-three, #blog-card, #contact-card,' +
 			'#clients, .section-title img';
 
 		sr.reveal(commonCards, {duration: 1100});

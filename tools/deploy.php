@@ -16,6 +16,11 @@ function doProcess(string $cmd, string $dir, string $name): void
 	}
 	\ob_end_clean();
 
+	$processExitCode = \pclose($process);
+	if ($processExitCode !== 0) {
+		throw new \RuntimeException("Process '$cmd' failed.", $processExitCode);
+	}
+
 	echo "$name finished.\n\n";
 }
 

@@ -40,6 +40,8 @@
 		"grunt-contrib-copy": "^1.0.0",
 		"grunt-contrib-cssmin": "^2.2.1",
 		"grunt-contrib-uglify-es": "^3.3.0",
-		"load-grunt-tasks": "^4.0.0"
+		"load-grunt-tasks": "^4.0.0",
+		"naja": "~1.5.1",
+		"nette-forms": "~2.4.2"
 	}
 }

@@ -20,6 +20,7 @@ module.exports = function (grunt) {
 		" <%= grunt.template.today('yyyy-mm-dd') %> */",
 
 		bowerDir: grunt.file.readJSON(".bowerrc").directory,
+		nodeDir: "node_modules",
 		jsDir: "www/js",
 		stylesDir: "www/styles",
 		fontsDir: "<%= stylesDir %>/fonts",
@@ -30,13 +31,15 @@ module.exports = function (grunt) {
 				"<%= bowerDir %>/bootstrap/dist/js/bootstrap.js",
 				"<%= bowerDir %>/scrollreveal/dist/scrollreveal.js",
 				// "<%= bowerDir %>/swiper/dist/js/swiper.jquery.js",
-				"<%= bowerDir %>/magnific-popup/dist/jquery.magnific-popup.js",
+				// "<%= bowerDir %>/magnific-popup/dist/jquery.magnific-popup.js",
+				"<%= nodeDir %>/nette-forms/src/assets/netteForms.js",
+				"<%= nodeDir %>/naja/dist/Naja.js",
 				"<%= jsDir %>/dh/main.js"
 			],
 			css: [
 				"<%= bowerDir %>/font-awesome/css/font-awesome.css",
 				"<%= bowerDir %>/animate.css/animate.css",
-				"<%= bowerDir %>/magnific-popup/dist/magnific-popup.css",
+				// "<%= bowerDir %>/magnific-popup/dist/magnific-popup.css",
 				// "<%= bowerDir %>/swiper/dist/css/swiper.css",
 				"<%= stylesDir %>/dh/materialize.css",
 				"<%= bowerDir %>/bootstrap/dist/css/bootstrap.css",

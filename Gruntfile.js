@@ -29,11 +29,13 @@ module.exports = function (grunt) {
 			js: [
 				"<%= bowerDir %>/jquery/dist/jquery.js",
 				"<%= bowerDir %>/bootstrap/dist/js/bootstrap.js",
+				"<%= bowerDir %>/materialize/dist/js/materialize.js",
 				"<%= bowerDir %>/scrollreveal/dist/scrollreveal.js",
 				// "<%= bowerDir %>/swiper/dist/js/swiper.jquery.js",
 				// "<%= bowerDir %>/magnific-popup/dist/jquery.magnific-popup.js",
 				"<%= nodeDir %>/nette-forms/src/assets/netteForms.js",
 				"<%= nodeDir %>/naja/dist/Naja.js",
+				"<%= jsDir %>/dh/dh.naja.js",
 				"<%= jsDir %>/dh/main.js"
 			],
 			css: [
@@ -86,7 +88,6 @@ module.exports = function (grunt) {
 				]
 			}
 		},
-
 
 		uglify: {
 			options: {

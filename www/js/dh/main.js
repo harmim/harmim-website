@@ -117,7 +117,7 @@
 
 
 		// function initClientsSliders() {
-		// 	var $clientcarousel = $('ul#clients-list');
+		// 	var $clientcarousel = $('ul.clients-list');
 		// 	var clients = $clientcarousel.children().length;
 		// 	var clientwidth = (clients * 140);
 		// 	$clientcarousel.css('width', clientwidth);
@@ -125,14 +125,14 @@
 		// 	var clientspeed = 1800;
 		// 	setInterval(rotateClients, clientspeed);
 		// 	$(document).on({mouseenter: function () {rotating = false;}, mouseleave: function () {rotating = true;}},
-		// 		'#clients');
+		// 		'.clients');
 		//
 		// 	function rotateClients() {
 		// 		if (rotating !== false) {
-		// 			var $first = $('ul#clients-list').find('li:first');
+		// 			var $first = $('ul.clients-list').find('li:first');
 		// 			$first.animate({'margin-left': '-140px'}, 2000, function () {
 		// 				$first.remove().css({'margin-left': '0px'});
-		// 				$('ul#clients-list').find('li:last').after($first);
+		// 				$('ul.clients-list').find('li:last').after($first);
 		// 			});
 		// 		}
 		// 	}
@@ -144,24 +144,15 @@
 		// }
 
 
-		// function initMail() {
-		// 	$('form#contact-form').on('submit', function (e) {
-		// 		e.preventDefault();
-		//
-		// 		$("#submit").attr('disabled', 'disabled');
-		// 		$('div#form-loader').removeClass('is-hidden').fadeIn(500);
-		//
-		// 		$.ajax({type: 'POST', url: 'php/mail_handler.php', data: $(this).serialize()}).done(function () {
-		// 			$('div#form-loader').fadeOut(500);
-		// 			Materialize.toast('Message Sent! I will contact you shortly, Thanks', 4000);
-		// 			$("form#contact-form")[0].reset();
-		// 			Materialize.updateTextFields();
-		// 			$("#submit").removeAttr('disabled', 'disabled');
-		// 		}).fail(function () {
-		// 			$('div#form-loader').fadeOut(500);
-		// 			Materialize.toast('Sorry! Something Wrong, Try Again', 4000);
-		// 			$("#submit").removeAttr('disabled', 'disabled');
-		// 		});
+		// function initMapsNormal() {
+		// 	var mapOptions = {
+		// 		zoom: 17, center: new google.maps.LatLng(51.5287352, -0.3817831),
+		// 		mapTypeId: google.maps.MapTypeId.ROADMAP, scrollwheel: false, disableDefaultUI: false
+		// 	};
+		// 	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+		// 	new MarkerWithLabel({
+		// 		position: myMap.getCenter(), icon: {path: google.maps.SymbolPath.CIRCLE, scale: 0}, map: map,
+		// 		labelAnchor: new google.maps.Point(10, 10), labelClass: "map-label", draggable: false
 		// 	});
 		// }
 
@@ -172,7 +163,7 @@
 		// initPortfolio();
 		initSkills();
 		// initClientsSliders();
-		// initMail();
+		// initMapsNormal();
 	});
 
 
@@ -181,9 +172,9 @@
 
 		window.sr = ScrollReveal({reset: false});
 		const commonCards = '.port-add-icon, .interest-icon-even, .interest-icon,' +
-			'.timeline-dot, .timeline-content, .port-add-more, .skills-card, #testimonials-card,' +
-			'.portfolios-card, .interest-card, #p-one, #p-two, #p-three, #blog-card, #contact-card,' +
-			'#clients, .section-title img';
+			'.timeline-dot, .timeline-content, .port-add-more, .skills-card, .testimonials-card,' +
+			'.portfolios-card, .interest-card, .price-one, .price-two, .price-three, .blog-card, .contact-card,' +
+			'.clients, .section-title img';
 
 		sr.reveal(commonCards, {duration: 1100});
 		sr.reveal('.about-card', {duration: 1400, delay: 500});

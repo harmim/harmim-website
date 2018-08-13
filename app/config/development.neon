@@ -1,0 +1,6 @@
+parameters:
+	config:
+		domainUrl: http://harmim.localhost.com
+
+services:
+#	nette.mailer:

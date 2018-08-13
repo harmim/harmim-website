@@ -1,0 +1,56 @@
+extensions:
+	translation: \Kdyby\Translation\DI\TranslationExtension
+	monolog: \Kdyby\Monolog\DI\MonologExtension
+
+translation:
+	default: cs
+	fallback: [cs, cs_CZ, en, en_GB]
+	dirs: [%appDir%/lang]
+	debugger: false
+
+application:
+	errorPresenter: Core:Error
+	scanComposer: false
+	scanDirs: false
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+forms:
+	messages:
+
+session:
+	expiration: 30 days
+	debugger: true
+
+tracy:
+	strictMode: true
+	errorTemplate: %appDir%/CoreModule/templates/Error500/default.phtml
+	showLocation: true
+	maxLength: 500
+	scream: true
+
+http:
+	headers:
+		X-Content-Type-Options: nosniff
+		X-XSS-Protection: "1; mode=block"
+		X-Frame-Options: DENY
+		Referrer-Policy: strict-origin-when-cross-origin
+		Feature-Policy: accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; camera 'none'; encrypted-media 'self'; fullscreen 'self'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'none'; picture-in-picture 'self'; speaker 'self'; usb 'none'; vr 'none'
+	frames:
+	csp:
+		# https://scotthelme.co.uk/content-security-policy-an-introduction/
+		# https://scotthelme.co.uk/csp-cheat-sheet/
+		# https://github.com/harmim/david-harmim-fitness/blob/master/app/config/common.neon
+		# https://securityheaders.com/?q=https%3A%2F%2Fwww.michalspacek.cz%2F&followRedirects=on
+		# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
+		# https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+		# https://content-security-policy.com/
+
+
+parameters:
+	config:
+		domainUrl:
+		defaultModuleWithLayout: Core
+
+		defaultMailFrom: info@harmim.cz
+		defaultMailFromName: Dominik Harmim

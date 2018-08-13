@@ -1,0 +1,7 @@
+tracy:
+	email: harmim6@gmail.com
+	fromEmail: tracy@harmim.cz
+
+parameters:
+	config:
+		domainUrl: http://www.harmim.cz

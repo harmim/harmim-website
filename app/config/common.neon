@@ -1,6 +1,5 @@
 extensions:
 	translation: \Kdyby\Translation\DI\TranslationExtension
-	monolog: \Kdyby\Monolog\DI\MonologExtension
 
 translation:
 	default: cs
@@ -15,6 +14,10 @@ application:
 	mapping:
 		*: App\*Module\Presenters\*Presenter
 
+decorator:
+	\Dh\Application\UI\BaseControl:
+		inject: true
+
 forms:
 	messages:
 
@@ -24,10 +27,8 @@ session:
 
 tracy:
 	strictMode: true
-	errorTemplate: %appDir%/CoreModule/templates/Error500/default.phtml
 	showLocation: true
 	maxLength: 500
-	scream: true
 
 http:
 	headers:
@@ -53,56 +54,70 @@ http:
 		usb: none
 		vr: none
 	csp:
-#		upgrade-insecure-requests: true
-#		block-all-mixed-content: true
-#		disown-opener: true
-#		plugin-types:
-#		default-src:
-#			- none
-#		script-src:
-#			- self
-#			- nonce
-#			- strict-dynamic
-#		style-src:
-#			- self
-#			- nonce
-#		img-src:
-#			- self
-#			- "data:"
-#		media-src:
-#			- self
-#		frame-src:
-#			- none
-#		font-src:
-#			- self
-#			- https://fonts.googleapis.com
-#		connect-src:
-#			- self
-#		form-action:
-#			- self
-#		object-src:
-#			- none
-#		frame-ancestors:
-#			- none
-#		base-uri:
-#			- none
-#		child-src:
-#			- none
-#		manifest-src:
-#			- self
-#		require-sri-for:
-#			- script
-#			- style
-#		sandbox:
-#			- allow-forms
-#			- allow-same-origin
-#			- allow-scripts
-#			- allow-modals
+		#upgrade-insecure-requests: true
+		#block-all-mixed-content: true
+		#disown-opener: true
+		#plugin-types:
+		#default-src:
+			#- none
+		#script-src:
+			#- self
+			#- nonce
+			#- strict-dynamic
+		#style-src:
+			#- self
+			#- nonce
+		#img-src:
+			#- self
+			#- "data:"
+		#media-src:
+			#- self
+		#frame-src:
+			#- none
+		#font-src:
+			#- self
+			#- https://fonts.googleapis.com
+		#connect-src:
+			#- self
+		#form-action:
+			#- self
+		#object-src:
+			#- none
+		#frame-ancestors:
+			#- none
+		#base-uri:
+			#- none
+		#child-src:
+			#- none
+		#manifest-src:
+			#- self
+		#require-sri-for:
+			#- script
+			#- style
+		#sandbox:
+			#- allow-forms
+			#- allow-same-origin
+			#- allow-scripts
+			#- allow-modals
 
 parameters:
 	config:
 		domainUrl:
 		defaultModuleWithLayout: Core
 
-		defaultMailFrom: info@harmim.cz
-		defaultMailFromName: Dominik Harmim
+		mail:
+			defaultFrom: info@harmim.cz
+			defaultFromName: Dominik Harmim
+
+services:
+	# Application templates locator
+	- \Dh\Application\Templates\TemplateLocator([%appDir%], %config.defaultModuleWithLayout%)
+
+	# Form factory
+	- \Dh\Forms\FormFactory
+
+	# Mail factory
+	- \Dh\Mail\MailFactory(%config%)
+
+includes:
+	- ../CoreModule/core.neon

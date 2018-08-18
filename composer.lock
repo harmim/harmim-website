@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ba960c32962f168df7a4d76779741d09",
+    "content-hash": "6912b52efed5b72afe1a17809e51c06c",
     "packages": [
         {
             "name": "dg/ftp-deployment",
@@ -67,78 +67,6 @@
                 "ssh"
             ],
             "time": "2018-06-06T10:58:13+00:00"
-        },
-        {
-            "name": "kdyby/monolog",
-            "version": "v1.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Kdyby/Monolog.git",
-                "reference": "9919e4be9eec16c9c2de74c85d6d926d06e621a7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Kdyby/Monolog/zipball/9919e4be9eec16c9c2de74c85d6d926d06e621a7",
-                "reference": "9919e4be9eec16c9c2de74c85d6d926d06e621a7",
-                "shasum": ""
-            },
-            "require": {
-                "kdyby/strict-objects": "^1.0",
-                "monolog/monolog": "^1.10",
-                "nette/di": "^2.4@dev",
-                "php": "^5.6 || ^7.0",
-                "tracy/tracy": "^2.4@dev"
-            },
-            "provide": {
-                "psr/log-implementation": "1.0.0"
-            },
-            "require-dev": {
-                "nette/application": "^2.4@dev",
-                "nette/bootstrap": "^2.4@dev",
-                "nette/http": "^2.4@dev",
-                "nette/tester": "~1.7"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Kdyby\\Monolog\\": "src/"
-                },
-                "classmap": [
-                    "src/exceptions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Filip Procházka",
-                    "email": "filip@prochazka.su",
-                    "homepage": "http://filip-prochazka.com"
-                },
-                {
-                    "name": "Martin Bažík",
-                    "email": "martin@bazo.sk",
-                    "homepage": "http://bazo.sk"
-                }
-            ],
-            "description": "Integration of Monolog into Nette Framework",
-            "homepage": "http://kdyby.org",
-            "keywords": [
-                "diagnostics",
-                "logging",
-                "monolog",
-                "nette"
-            ],
-            "time": "2017-05-22T18:16:52+00:00"
         },
         {
             "name": "kdyby/strict-objects",
@@ -356,116 +284,39 @@
             "time": "2018-06-03T17:34:15+00:00"
         },
         {
-            "name": "monolog/monolog",
-            "version": "1.23.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
-                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "psr/log": "~1.0"
-            },
-            "provide": {
-                "psr/log-implementation": "1.0.0"
-            },
-            "require-dev": {
-                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
-                "doctrine/couchdb": "~1.0@dev",
-                "graylog2/gelf-php": "~1.0",
-                "jakub-onderka/php-parallel-lint": "0.9",
-                "php-amqplib/php-amqplib": "~2.4",
-                "php-console/php-console": "^3.1.3",
-                "phpunit/phpunit": "~4.5",
-                "phpunit/phpunit-mock-objects": "2.3.0",
-                "ruflin/elastica": ">=0.90 <3.0",
-                "sentry/sentry": "^0.13",
-                "swiftmailer/swiftmailer": "^5.3|^6.0"
-            },
-            "suggest": {
-                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
-                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
-                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
-                "ext-mongo": "Allow sending log messages to a MongoDB server",
-                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
-                "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
-                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
-                "php-console/php-console": "Allow sending log messages to Google Chrome",
-                "rollbar/rollbar": "Allow sending log messages to Rollbar",
-                "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
-                "sentry/sentry": "Allow sending log messages to a Sentry server"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Monolog\\": "src/Monolog"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jordi Boggiano",
-                    "email": "j.boggiano@seld.be",
-                    "homepage": "http://seld.be"
-                }
-            ],
-            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
-            "homepage": "http://github.com/Seldaek/monolog",
-            "keywords": [
-                "log",
-                "logging",
-                "psr-3"
-            ],
-            "time": "2017-06-19T01:22:40+00:00"
-        },
-        {
             "name": "nette/application",
-            "version": "v3.0.0-alpha1",
+            "version": "v2.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/application.git",
-                "reference": "b7df270f993f3006d4f1f1d0c3a48df37b6eefec"
+                "reference": "fe1915f880d8e5d16217bad467950733fd5cbad3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/application/zipball/b7df270f993f3006d4f1f1d0c3a48df37b6eefec",
-                "reference": "b7df270f993f3006d4f1f1d0c3a48df37b6eefec",
+                "url": "https://api.github.com/repos/nette/application/zipball/fe1915f880d8e5d16217bad467950733fd5cbad3",
+                "reference": "fe1915f880d8e5d16217bad467950733fd5cbad3",
                 "shasum": ""
             },
             "require": {
-                "nette/component-model": "^3.0",
-                "nette/http": "^3.0",
-                "nette/utils": "^2.4 || ^3.0",
-                "php": ">=7.1"
+                "nette/component-model": "^2.3",
+                "nette/http": "^2.2",
+                "nette/reflection": "^2.2",
+                "nette/utils": "^2.4 || ~3.0.0",
+                "php": ">=5.6.0"
             },
             "conflict": {
                 "nette/di": "<2.4",
-                "nette/forms": "<3.0",
-                "nette/latte": "<3.0",
+                "nette/forms": "<2.4",
+                "nette/latte": "<2.4",
                 "nette/nette": "<2.2"
             },
             "require-dev": {
-                "latte/latte": "^3.0",
-                "mockery/mockery": "^1.0",
+                "latte/latte": "^2.4.3",
+                "mockery/mockery": "^0.9.5",
                 "nette/di": "^2.4 || ~3.0.0",
-                "nette/forms": "^3.0",
+                "nette/forms": "^2.4",
                 "nette/robot-loader": "^2.4.2 || ^3.0",
-                "nette/security": "^3.0",
+                "nette/security": "^2.4",
                 "nette/tester": "^2.0",
                 "tracy/tracy": "^2.4"
             },
@@ -476,7 +327,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -503,44 +354,56 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "Nette Application MVC Component",
+            "description": "🏆 Nette Application: a full-stack component-based MVC kernel for PHP that helps you write powerful and modern web applications. Write less, have cleaner code and your work will bring you joy.",
             "homepage": "https://nette.org",
-            "time": "2017-02-02T02:32:03+00:00"
+            "keywords": [
+                "Forms",
+                "component-based",
+                "control",
+                "framework",
+                "mvc",
+                "mvp",
+                "nette",
+                "presenter",
+                "routing",
+                "seo"
+            ],
+            "time": "2018-05-16T09:28:51+00:00"
         },
         {
             "name": "nette/bootstrap",
-            "version": "v3.0.0-beta",
+            "version": "v2.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/bootstrap.git",
-                "reference": "336a48268c7a58ccb8240dc333e4a54b05a958d7"
+                "reference": "268816e3f1bb7426c3a4ceec2bd38a036b532543"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/bootstrap/zipball/336a48268c7a58ccb8240dc333e4a54b05a958d7",
-                "reference": "336a48268c7a58ccb8240dc333e4a54b05a958d7",
+                "url": "https://api.github.com/repos/nette/bootstrap/zipball/268816e3f1bb7426c3a4ceec2bd38a036b532543",
+                "reference": "268816e3f1bb7426c3a4ceec2bd38a036b532543",
                 "shasum": ""
             },
             "require": {
-                "nette/di": "^2.4 || ^3.0",
-                "nette/utils": "^2.4 || ^3.0",
-                "php": ">=7.1"
+                "nette/di": "~2.4.7",
+                "nette/utils": "~2.4",
+                "php": ">=5.6.0"
             },
             "conflict": {
                 "nette/nette": "<2.2"
             },
             "require-dev": {
-                "latte/latte": "^2.2",
-                "nette/application": "^2.3 || ^3.0",
-                "nette/caching": "^2.3 || ^3.0",
-                "nette/database": "^2.3 || ^3.0",
-                "nette/forms": "^2.3 || ^3.0",
-                "nette/http": "^2.4.0 || ^3.0",
-                "nette/mail": "^2.3 || ^3.0",
+                "latte/latte": "~2.2",
+                "nette/application": "~2.3",
+                "nette/caching": "~2.3",
+                "nette/database": "~2.3",
+                "nette/forms": "~2.3",
+                "nette/http": "~2.4.0",
+                "nette/mail": "~2.3",
                 "nette/robot-loader": "^2.4.2 || ^3.0",
-                "nette/safe-stream": "^2.2",
-                "nette/security": "^2.3 || ^3.0",
-                "nette/tester": "^2.0",
+                "nette/safe-stream": "~2.2",
+                "nette/security": "~2.3",
+                "nette/tester": "~2.0",
                 "tracy/tracy": "^2.4.1"
             },
             "suggest": {
@@ -550,7 +413,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -574,9 +437,14 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "Nette Bootstrap",
+            "description": "🅱 Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
             "homepage": "https://nette.org",
-            "time": "2017-02-02T03:24:19+00:00"
+            "keywords": [
+                "bootstrapping",
+                "configurator",
+                "nette"
+            ],
+            "time": "2018-05-17T12:52:20+00:00"
         },
         {
             "name": "nette/caching",
@@ -649,21 +517,21 @@
         },
         {
             "name": "nette/component-model",
-            "version": "v3.0.0-beta2",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/component-model.git",
-                "reference": "1a6d34d93172f2a722d775bad47a746d94944ac0"
+                "reference": "6e7980f5ddec31f68a39e767799b1b0be9dd1014"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/component-model/zipball/1a6d34d93172f2a722d775bad47a746d94944ac0",
-                "reference": "1a6d34d93172f2a722d775bad47a746d94944ac0",
+                "url": "https://api.github.com/repos/nette/component-model/zipball/6e7980f5ddec31f68a39e767799b1b0be9dd1014",
+                "reference": "6e7980f5ddec31f68a39e767799b1b0be9dd1014",
                 "shasum": ""
             },
             "require": {
                 "nette/utils": "^2.5 || ~3.0.0",
-                "php": ">=7.1"
+                "php": ">=5.6.0"
             },
             "conflict": {
                 "nette/application": "<2.4",
@@ -676,7 +544,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -706,7 +574,7 @@
                 "components",
                 "nette"
             ],
-            "time": "2018-03-20T16:31:10+00:00"
+            "time": "2018-03-20T16:32:50+00:00"
         },
         {
             "name": "nette/di",
@@ -779,33 +647,33 @@
         },
         {
             "name": "nette/finder",
-            "version": "v3.0.0-RC",
+            "version": "v2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/finder.git",
-                "reference": "21d4aa7834e8cb58f3a1666607acdf00d7486edb"
+                "reference": "ee951a656cb8ac622e5dd33474a01fd2470505a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/finder/zipball/21d4aa7834e8cb58f3a1666607acdf00d7486edb",
-                "reference": "21d4aa7834e8cb58f3a1666607acdf00d7486edb",
+                "url": "https://api.github.com/repos/nette/finder/zipball/ee951a656cb8ac622e5dd33474a01fd2470505a0",
+                "reference": "ee951a656cb8ac622e5dd33474a01fd2470505a0",
                 "shasum": ""
             },
             "require": {
-                "nette/utils": "^2.4 || ~3.0.0",
-                "php": ">=7.0"
+                "nette/utils": "~2.4",
+                "php": ">=5.6.0"
             },
             "conflict": {
                 "nette/nette": "<2.2"
             },
             "require-dev": {
-                "nette/tester": "^2.0",
+                "nette/tester": "~2.0",
                 "tracy/tracy": "^2.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -829,43 +697,49 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "Nette Finder: Files Searching",
+            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
-            "time": "2017-02-02T02:09:35+00:00"
+            "keywords": [
+                "filesystem",
+                "glob",
+                "iterator",
+                "nette"
+            ],
+            "time": "2018-06-28T11:49:23+00:00"
         },
         {
             "name": "nette/forms",
-            "version": "v3.0.0-beta",
+            "version": "v2.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/forms.git",
-                "reference": "20559e940985fc7c6da2774fffee25c2271ee3da"
+                "reference": "57dbcea96334e3d6034d8a44bd609a51a4f941d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/forms/zipball/20559e940985fc7c6da2774fffee25c2271ee3da",
-                "reference": "20559e940985fc7c6da2774fffee25c2271ee3da",
+                "url": "https://api.github.com/repos/nette/forms/zipball/57dbcea96334e3d6034d8a44bd609a51a4f941d7",
+                "reference": "57dbcea96334e3d6034d8a44bd609a51a4f941d7",
                 "shasum": ""
             },
             "require": {
-                "nette/component-model": "^3.0.0-beta2",
-                "nette/http": "^2.3.8 || ~3.0.0",
-                "nette/utils": "^3.0-beta2",
-                "php": ">=7.1"
+                "nette/component-model": "~2.3",
+                "nette/http": "^2.3.8",
+                "nette/utils": "^2.4.6",
+                "php": ">=5.6.0"
             },
             "conflict": {
                 "nette/nette": "<2.2"
             },
             "require-dev": {
-                "latte/latte": "^2.4.1",
-                "nette/di": "^2.4 || ~3.0.0",
-                "nette/tester": "^2.0",
+                "latte/latte": "~2.4",
+                "nette/di": "~2.4",
+                "nette/tester": "~2.0",
                 "tracy/tracy": "^2.4"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -899,7 +773,7 @@
                 "nette",
                 "validation"
             ],
-            "time": "2018-03-20T21:12:40+00:00"
+            "time": "2018-06-28T11:15:32+00:00"
         },
         {
             "name": "nette/http",
@@ -975,22 +849,22 @@
         },
         {
             "name": "nette/mail",
-            "version": "v3.0.0-beta1",
+            "version": "v2.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/mail.git",
-                "reference": "dba96700b42525aedecf359587af8969352cee70"
+                "reference": "13312eb627d913f2630018a07a9e40cb7003dc76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/mail/zipball/dba96700b42525aedecf359587af8969352cee70",
-                "reference": "dba96700b42525aedecf359587af8969352cee70",
+                "url": "https://api.github.com/repos/nette/mail/zipball/13312eb627d913f2630018a07a9e40cb7003dc76",
+                "reference": "13312eb627d913f2630018a07a9e40cb7003dc76",
                 "shasum": ""
             },
             "require": {
                 "ext-iconv": "*",
                 "nette/utils": "^2.4 || ~3.0.0",
-                "php": ">=7.0"
+                "php": ">=5.6.0"
             },
             "conflict": {
                 "nette/nette": "<2.2"
@@ -1006,7 +880,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -1030,9 +904,16 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "Nette Mail: Sending E-mails",
+            "description": "📧 Nette Mail: handy email creation and transfer library for PHP with both text and MIME-compliant support.",
             "homepage": "https://nette.org",
-            "time": "2017-02-02T01:27:35+00:00"
+            "keywords": [
+                "mail",
+                "mailer",
+                "mime",
+                "nette",
+                "smtp"
+            ],
+            "time": "2018-03-18T16:30:02+00:00"
         },
         {
             "name": "nette/neon",
@@ -1718,33 +1599,15 @@
     "packages-dev": [],
     "aliases": [
         {
-            "alias": "3.0",
-            "alias_normalized": "3.0.0.0",
-            "version": "2.5.2.0",
-            "package": "nette/utils"
-        },
-        {
             "alias": "2.4.9",
             "alias_normalized": "2.4.9.0",
             "version": "3.0.9999999.9999999-dev",
             "package": "nette/http"
-        },
-        {
-            "alias": "2.4.2",
-            "alias_normalized": "2.4.2.0",
-            "version": "3.0.0.0-RC",
-            "package": "nette/finder"
         }
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "nette/application": 15,
-        "nette/bootstrap": 10,
-        "nette/component-model": 10,
-        "nette/http": 20,
-        "nette/mail": 10,
-        "nette/finder": 5,
-        "nette/forms": 10
+        "nette/http": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

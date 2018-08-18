@@ -1,0 +1,62 @@
+<?php
+
+declare(strict_types=1);
+
+
+/**
+ * @param string $lang
+ */
+
+
+$messages = [
+	'cs' => [
+		'title' => 'Dominik Harmim',
+		'headline' => 'Probíhá údržba',
+		'link' => 'http://www.harmim.cz',
+		'message1' => 'Omlouvám se, na této stránce právě probíhá údržba.',
+		'message2' => 'Prosím zkuste navštívit můj web za několik minut.',
+		'thanks' => 'Děkuji.',
+	],
+	'en' => [
+		'title' => 'Dominik Harmim',
+		'headline' => 'Site under maintenance',
+		'link' => 'http://www.harmim.cz/en',
+		'message1' => 'I am sorry, this site is currently under maintenance.',
+		'message2' => 'Please try to visit my site in few minutes.',
+		'thanks' => 'Thank you.',
+	],
+];
+
+$lang = isset($lang) && \in_array($lang, \array_keys($messages), true) ? $lang : 'cs';
+$message = $messages[$lang];
+
+?>
+
+<!DOCTYPE html><!-- "' --></textarea></script></style></pre></xmp></a></audio></button></canvas></datalist></details></dialog></iframe></listing></meter></noembed></noframes></noscript></optgroup></option></progress></rp></select></table></template></title></video>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title><?= $message['title']; ?></title>
+
+<style>
+	#error-500 {
+		all: initial; position: absolute; top: 0; left: 0; right: 0; height: 70vh; min-height: 400px; display: flex;
+		align-items: center; justify-content: center; z-index: 1000;
+	}
+	#error-500 div { all: initial; max-width: 550px; background: white; color: #333; display: block; }
+	#error-500 h1 { all: initial; font: bold 50px/1.1 sans-serif; display: block; margin: 40px; }
+	#error-500 p { all: initial; font: 20px/1.4 sans-serif; margin: 40px; display: block; }
+</style>
+
+<div id="error-500">
+	<div>
+		<h1><?= $message['headline']; ?></h1>
+		<p><?= $message['message1']; ?></p>
+		<p><?= $message['message2']; ?></p>
+		<p><a href="<?= $message['link']; ?>"><?= $message['link']; ?></a></p>
+		<p><?= $message['thanks']; ?></p>
+	</div>
+</div>
+
+<script>
+	document.body.insertBefore(document.getElementById('error-500'), document.body.firstChild);
+</script>

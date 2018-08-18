@@ -35,17 +35,69 @@ http:
 		X-XSS-Protection: "1; mode=block"
 		X-Frame-Options: DENY
 		Referrer-Policy: strict-origin-when-cross-origin
-		Feature-Policy: accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; camera 'none'; encrypted-media 'self'; fullscreen 'self'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'none'; picture-in-picture 'self'; speaker 'self'; usb 'none'; vr 'none'
-	frames:
+	feature-policy:
+		accelerometer: none
+		ambient-light-sensor: none
+		autoplay: none
+		camera: none
+		encrypted-media: self
+		fullscreen: self
+		geolocation: none
+		gyroscope: none
+		magnetometer: none
+		microphone: none
+		midi: none
+		payment: none
+		picture-in-picture: self
+		speaker: self
+		usb: none
+		vr: none
 	csp:
-		# https://scotthelme.co.uk/content-security-policy-an-introduction/
-		# https://scotthelme.co.uk/csp-cheat-sheet/
-		# https://github.com/harmim/david-harmim-fitness/blob/master/app/config/common.neon
-		# https://securityheaders.com/?q=https%3A%2F%2Fwww.michalspacek.cz%2F&followRedirects=on
-		# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
-		# https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
-		# https://content-security-policy.com/
-
+#		upgrade-insecure-requests: true
+#		block-all-mixed-content: true
+#		disown-opener: true
+#		plugin-types:
+#		default-src:
+#			- none
+#		script-src:
+#			- self
+#			- nonce
+#			- strict-dynamic
+#		style-src:
+#			- self
+#			- nonce
+#		img-src:
+#			- self
+#			- "data:"
+#		media-src:
+#			- self
+#		frame-src:
+#			- none
+#		font-src:
+#			- self
+#			- https://fonts.googleapis.com
+#		connect-src:
+#			- self
+#		form-action:
+#			- self
+#		object-src:
+#			- none
+#		frame-ancestors:
+#			- none
+#		base-uri:
+#			- none
+#		child-src:
+#			- none
+#		manifest-src:
+#			- self
+#		require-sri-for:
+#			- script
+#			- style
+#		sandbox:
+#			- allow-forms
+#			- allow-same-origin
+#			- allow-scripts
+#			- allow-modals
 
 parameters:
 	config:

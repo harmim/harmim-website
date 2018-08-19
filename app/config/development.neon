@@ -1,6 +1,10 @@
+http:
+	csp:
+		upgrade-insecure-requests: true
+
 parameters:
 	config:
-		domainUrl: http://harmim.localhost.com
+		domainUrl: https://harmim.localhost.com
 
 services:
 	nette.mailer: \Dh\Mail\LogMailer(%logDir%)

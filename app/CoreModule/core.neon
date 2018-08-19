@@ -1,17 +1,3 @@
-services:
-	# Router
-	router: \App\CoreModule\Model\Router\RouterFactory::createRouter
-
-	# Controls
-	-
-		implement: \App\CoreModule\Controls\Head\IHeadControlFactory
-		class: \App\CoreModule\Controls\Head\HeadControl(%isProductionDomain%, %wwwDir%)
-	- \App\CoreModule\Controls\PreLoader\IPreLoaderControlFactory
-	- \App\CoreModule\Controls\Header\IHeaderControlFactory
-	- \App\CoreModule\Controls\Header\Homepage\HomepageHeaderControlFactory(%header.homepage%)
-	- \App\CoreModule\Controls\ScrollToTop\IScrollToTopControlFactory
-	- \App\CoreModule\Controls\Footer\IFooterControlFactory
-
 parameters:
 	header:
 		homepage:
@@ -43,3 +29,17 @@ parameters:
 				id: common.section.contact
 				name: header.contact
 				icon: fa-envelope
+
+services:
+	# Router
+	router: \App\CoreModule\Model\Router\RouterFactory::createRouter
+
+	# Controls
+	-
+		implement: \App\CoreModule\Controls\Head\IHeadControlFactory
+		class: \App\CoreModule\Controls\Head\HeadControl(%isProductionDomain%, %wwwDir%)
+	- \App\CoreModule\Controls\PreLoader\IPreLoaderControlFactory
+	- \App\CoreModule\Controls\Header\IHeaderControlFactory
+	- \App\CoreModule\Controls\Header\Homepage\HomepageHeaderControlFactory(%header.homepage%)
+	- \App\CoreModule\Controls\ScrollToTop\IScrollToTopControlFactory
+	- \App\CoreModule\Controls\Footer\IFooterControlFactory

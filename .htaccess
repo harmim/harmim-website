@@ -12,7 +12,7 @@ Allow from all
 	RewriteEngine On
 	RewriteBase /
 
-	# redirect to www directory but not in subsequent requests
+	# remove www from URI but not in subsequent requests
 	RewriteCond %{ENV:REDIRECT_STATUS} ^$
 	RewriteRule ^www/(.*)$ $1 [R=301,QSA,L]
 
@@ -22,20 +22,33 @@ Allow from all
 	# prevents files starting with dot to be viewed by browser
 	RewriteRule /\.|^\.(?!well-known/) - [F]
 
-	# redirect to www domain
-	RewriteCond %{HTTP_HOST} !^www\.$
-	RewriteCond %{HTTP_HOST} !^.*localhost.*$
+	# redirect to http www domain
+	RewriteCond %{HTTPS} off
+	RewriteCond %{HTTP_HOST} !^www\.
+	RewriteCond %{HTTP_HOST} !\.localhost\.
 	RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,QSA,L]
+
+	# redirect to https www domain
+	RewriteCond %{HTTPS} on
+	RewriteCond %{HTTP_HOST} !^www\.
+	RewriteCond %{HTTP_HOST} !\.localhost\.
+	RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,QSA,L]
 
 	# redirect to http
 	RewriteCond %{HTTPS} on
-	RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,QSA,L]
+	RewriteCond %{HTTP_HOST} !\.localhost\.
+	RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1 [R=301,QSA,L]
+
+	# redirect to https
+	RewriteCond %{HTTPS} off
+	RewriteCond %{HTTP_HOST} \.localhost\.
+	RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,QSA,L]
 
 	# remove slash from the end of URL
-	RewriteCond %{REQUEST_URI} ^(.+)/$
+	RewriteCond %{REQUEST_URI} /$
 	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteCond %{REQUEST_METHOD} ^GET$
-	RewriteRule ^www/(.*)/$ $1 [R=301,QSA,L]
+	RewriteCond %{REQUEST_METHOD} GET
+	RewriteRule ^(.*)/$ $1 [R=301,QSA,L]
 
 	# front controller
 	RewriteCond %{REQUEST_FILENAME} !-f

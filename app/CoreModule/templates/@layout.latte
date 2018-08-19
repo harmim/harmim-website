@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{$locale}">
+<head>
+	{control head title => isset($title) ? $title : null}
+</head>
+<body>
+	{control preLoader}
+
+	{control header}
+
+	{ifset #content}{include content}{/ifset}
+
+	{control scrollToTop}
+
+	{control footer}
+
+	{control head:scripts}
+</body>
+</html>

@@ -37,14 +37,20 @@ abstract class BaseControl extends \Nette\Application\UI\Control
 	}
 
 
-	protected function beforeRender(): void
+	public function getTemplateName(): ?string
 	{
+		return $this->templateName;
 	}
 
 
 	public function setTemplateName(?string $templateName): void
 	{
 		$this->templateName = $templateName;
+	}
+
+
+	protected function beforeRender(): void
+	{
 	}
 
 

@@ -27,28 +27,30 @@ final class Configurator extends \Nette\Configurator
 
 	public function loadConfigs(
 		array $configs = [],
-		array $configDirs = [],
+		?string $configDir = null,
 		string $productionConfig = 'production',
-		string $developmentConfig = 'development'
+		string $developmentConfig = 'development',
+		string $debugConfig = 'debug'
 	): self {
 		if (!$configs) {
 			$configs = ['config'];
 		}
-		if (!$configDirs) {
-			$configDirs = [$this->parameters['appDir'] . '/config'];
+		if (!$configDir) {
+			$configDir = $this->parameters['appDir'] . '/config';
 		}
 
-		\array_unshift(
-			$configs,
-			$this->parameters[self::CONFIG_KEY_IS_PRODUCTION_DOMAIN] ? $productionConfig : $developmentConfig
-		);
+		$configs[] = $this->parameters[self::CONFIG_KEY_IS_PRODUCTION_DOMAIN] ? $productionConfig : $developmentConfig;
+		foreach ($configs as $config) {
+			$path = "$configDir/$config.neon";
+			if (\is_readable($path)) {
+				$this->addConfig($path);
+			}
+		}
 
-		foreach ($configDirs as $configDir) {
-			foreach ($configs as $config) {
-				$path = "$configDir/$config.neon";
-				if (\is_readable($path)) {
-					$this->addConfig($path);
-				}
+		if ($this->isDebugMode()) {
+			$debugPath = "$configDir/$debugConfig.neon";
+			if (\is_readable($debugPath)) {
+				$this->addConfig($debugPath);
 			}
 		}
 

@@ -1,0 +1,17 @@
+author: "Dominik Harmim"
+description: "PHP vývojář a student Fakulty informačních technologií VUT v Brně."
+briefDescription: "PHP vývojář a student FIT VUT."
+keywords: """
+dominik, harmim, brno, php, vývojář, student, VUT, informační technologie,
+it, nette, git, javascript, c, sql, java, html, unix, linux, mysql, web
+"""
+title: "Dominik Harmim"
+
+section:
+	home: "domu"
+	about: "o-mne"
+	education: "vzdelani"
+	skills: "dovednosti"
+	experience: "zkusenosti"
+	interest: "zajmy"
+	contact: "kontakt"

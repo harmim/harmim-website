@@ -1,0 +1,24 @@
+<header n:if="$firstLink" id="{$firstLink->getId()}" class="home">
+	<nav class="menu theMenu">
+		<div class="menu-wrap menu-options">
+			<div class="logo-flat">
+				<img alt="osobní logo" class="img-responsive" src="/img/logo.png">
+			</div>
+			<br>
+
+			{foreach $links as $link}
+				<a href="#{$link->getId()}"><i n:class="title-icon, fa, $link->getIcon()"></i>{$link->getName()}</a>
+			{/foreach}
+		</div>
+
+		<div class="menuToggle">
+			<div class="toggle-normal">
+				<i class="material-icons top-bar">remove</i>
+				<i class="material-icons middle-bar">remove</i>
+				<i class="material-icons bottom-bar">remove</i>
+			</div>
+		</div>
+	</nav>
+
+	<div class="header-background section"></div>
+</header>

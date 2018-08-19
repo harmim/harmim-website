@@ -1,0 +1,21 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta name="author" content="{='common.author'|translate}">
+<meta name="description" content="{='common.description'|translate}">
+<meta name="keywords" content="{='common.keywords'|translate}">
+
+{var $title = !empty($title) ? $title . ' | ' : ''}
+{php $title .= (('common.title')|translate)}
+<title>{$title}</title>
+
+<link rel="icon" type="image/x-icon" href="{$basePath}/favicon.ico">
+
+<link rel="stylesheet" type="text/css" n:nonce href="https://fonts.googleapis.com/css?family=Raleway:500">
+<link rel="stylesheet" type="text/css" n:nonce href="https://fonts.googleapis.com/css?family=Muli">
+<link rel="stylesheet" type="text/css" n:nonce href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+{foreach $styles as $style}
+	<link rel="stylesheet" type="text/css" n:nonce href="{$basePath . $style}">
+{/foreach}

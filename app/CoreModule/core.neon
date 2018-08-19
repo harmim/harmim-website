@@ -1,3 +1,45 @@
 services:
 	# Router
 	router: \App\CoreModule\Model\Router\RouterFactory::createRouter
+
+	# Controls
+	-
+		implement: \App\CoreModule\Controls\Head\IHeadControlFactory
+		class: \App\CoreModule\Controls\Head\HeadControl(%isProductionDomain%, %wwwDir%)
+	- \App\CoreModule\Controls\PreLoader\IPreLoaderControlFactory
+	- \App\CoreModule\Controls\Header\IHeaderControlFactory
+	- \App\CoreModule\Controls\Header\Homepage\HomepageHeaderControlFactory(%header.homepage%)
+	- \App\CoreModule\Controls\ScrollToTop\IScrollToTopControlFactory
+	- \App\CoreModule\Controls\Footer\IFooterControlFactory
+
+parameters:
+	header:
+		homepage:
+			-
+				id: common.section.home
+				name: header.home
+				icon: fa-user
+			-
+				id: common.section.about
+				name: header.about
+				icon: fa-dashboard
+			-
+				id: common.section.education
+				name: header.education
+				icon: fa-graduation-cap
+			-
+				id: common.section.skills
+				name: header.skills
+				icon: fa-sliders
+			-
+				id: common.section.experience
+				name: header.experience
+				icon: fa-suitcase
+			-
+				id: common.section.interest
+				name: header.interest
+				icon: fa-heart
+			-
+				id: common.section.contact
+				name: header.contact
+				icon: fa-envelope

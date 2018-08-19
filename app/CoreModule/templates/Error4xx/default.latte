@@ -1,0 +1,25 @@
+{default $title = (('errorPage.headline')|translate)}
+
+{block content}
+
+<div class="about section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="about-card card">
+					<div class="card-content">
+						<h1>{='errorPage.headline'|translate}</h1>
+						<p>{='errorPage.message'|translate}</p>
+						<p>{='errorPage.goto'|translate} <a href="{$domainUrl}">{$domainUrl}</a>.</p>
+					</div>
+
+					<div class="about-btn-card-action card-action">
+						<div class="about-btn">
+							{='errorPage.errorCode'|translate}: {$code}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

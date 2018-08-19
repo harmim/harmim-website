@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dh\Config;
+namespace Dh\Configurator;
 
 final class Configurator extends \Nette\Configurator
 {
@@ -20,7 +20,7 @@ final class Configurator extends \Nette\Configurator
 			'logDir' => "$rootDir/log",
 			'tempDir' => "$rootDir/temp",
 			'wwwDir' => "$rootDir/www",
-			self::CONFIG_KEY_IS_PRODUCTION_DOMAIN => \Dh\Config\Helpers::detectProductionDomain(),
+			self::CONFIG_KEY_IS_PRODUCTION_DOMAIN => \Dh\Configurator\Helpers::detectProductionDomain(),
 		]);
 	}
 

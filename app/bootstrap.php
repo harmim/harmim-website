@@ -8,10 +8,10 @@ return \call_user_func(function (): \Nette\DI\Container {
 
 	$rootDir = (string) \realpath(__DIR__ . '/..');
 
-	$configurator = new \Dh\Config\Configurator($rootDir);
+	$configurator = new \Dh\Configurator\Configurator($rootDir);
 	$configurator->setTimeZone('Europe/Prague');
 	$configurator->setTempDirectory("$rootDir/temp");
-	$configurator->setDebugMode(\Dh\Config\Helpers::detectDebugMode([
+	$configurator->setDebugMode(\Dh\Configurator\Helpers::detectDebugMode([
 		'91.224.48.134',
 		'84.42.169.108',
 	]));

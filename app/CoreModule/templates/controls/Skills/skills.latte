@@ -1,0 +1,34 @@
+<section id="{='common.section.skills'|translate}" class="skills section">
+	<div class="container">
+		<div class="section-title">
+			<h4 class="text-uppercase text-center"><img src="/img/icons/mixer.png" alt="{='header.skills'|translate}">
+				{='header.skills'|translate}
+			</h4>
+		</div>
+
+		<div n:if="$skillGroups" class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="skills-card card">
+					<div class="card-content">
+						<div class="row">
+							<div n:foreach="$skillGroups as $skillGroup" class="col-md-4 col-sm-4 col-xs-12">
+								<div class="skills-title">
+									<h6 class="text-center">{$skillGroup->getTitle()}</h6>
+								</div>
+
+								{foreach $skillGroup->getSkills() as $skill}
+									{var $percentage = $skill->getPercentage()}
+									<div class="skillbar" data-percent="{$percentage}%">
+										<div class="skillbar-title"><span>{$skill->getTitle()}</span></div>
+										<div class="skillbar-bar"></div>
+										<div class="skill-bar-percent">{$percentage}%</div>
+									</div>
+								{/foreach}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

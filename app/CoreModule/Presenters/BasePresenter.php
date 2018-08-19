@@ -23,11 +23,6 @@ abstract class BasePresenter extends \Dh\Application\UI\BasePresenter
 	private $preLoaderControlFactory;
 
 	/**
-	 * @var \App\CoreModule\Controls\Header\Homepage\IHomepageHeaderControlFactory
-	 */
-	private $headerControlFactory;
-
-	/**
 	 * @var \App\CoreModule\Controls\ScrollToTop\IScrollToTopControlFactory
 	 */
 	private $scrollToTopControlFactory;
@@ -49,13 +44,6 @@ abstract class BasePresenter extends \Dh\Application\UI\BasePresenter
 		\App\CoreModule\Controls\PreLoader\IPreLoaderControlFactory $preLoaderControlFactory
 	): void {
 		$this->preLoaderControlFactory = $preLoaderControlFactory;
-	}
-
-
-	public function injectHomepageHeaderControlFactory(
-		\App\CoreModule\Controls\Header\Homepage\IHomepageHeaderControlFactory $homepageHeaderControlFactory
-	): void {
-		$this->headerControlFactory = $homepageHeaderControlFactory;
 	}
 
 
@@ -89,12 +77,6 @@ abstract class BasePresenter extends \Dh\Application\UI\BasePresenter
 	protected function createComponentPreLoader(): \App\CoreModule\Controls\PreLoader\PreLoaderControl
 	{
 		return $this->preLoaderControlFactory->create();
-	}
-
-
-	protected function createComponentHeader(): \App\CoreModule\Controls\Header\HeaderControl
-	{
-		return $this->headerControlFactory->create();
 	}
 
 

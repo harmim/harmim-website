@@ -28,6 +28,9 @@ final class HeaderControl extends \Dh\Application\UI\BaseControl
 	}
 
 
+	/**
+	 * @return array|\App\CoreModule\Model\Header\Link[]
+	 */
 	private function getLinks(): array
 	{
 		$links = [];

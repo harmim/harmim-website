@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dh\Config;
+namespace Dh\Configurator;
 
 final class Helpers
 {
@@ -30,14 +30,14 @@ final class Helpers
 		}
 
 		if (
-			!isset($_COOKIE[\Dh\Config\Configurator::SECRET_DEBUG_NAME])
-			|| !(bool) $_COOKIE[\Dh\Config\Configurator::SECRET_DEBUG_NAME]
+			!isset($_COOKIE[\Dh\Configurator\Configurator::SECRET_DEBUG_NAME])
+			|| !(bool) $_COOKIE[\Dh\Configurator\Configurator::SECRET_DEBUG_NAME]
 		) {
 			return false;
 		}
 
-		if (\getenv(\Dh\Config\Configurator::SECRET_DEBUG_NAME) !== false) {
-			return (bool) \getenv(\Dh\Config\Configurator::SECRET_DEBUG_NAME);
+		if (\getenv(\Dh\Configurator\Configurator::SECRET_DEBUG_NAME) !== false) {
+			return (bool) \getenv(\Dh\Configurator\Configurator::SECRET_DEBUG_NAME);
 
 		} else {
 			$ip = $_SERVER['REMOTE_ADDR'] ?? \php_uname('n');

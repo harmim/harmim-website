@@ -9,9 +9,9 @@ abstract class Mail
 	use \Nette\SmartObject;
 
 	/**
-	 * @var array
+	 * @var \Dh\Config\IConfigService
 	 */
-	protected $config;
+	protected $configService;
 
 	/**
 	 * @var \Kdyby\Translation\ITranslator
@@ -50,14 +50,14 @@ abstract class Mail
 
 
 	public function __construct(
-		array $config,
+		\Dh\Config\IConfigService $configService,
 		\Nette\Mail\IMailer $mailer,
 		\Nette\Application\UI\ITemplateFactory $templateFactory,
 		\Kdyby\Translation\ITranslator $translator,
 		\Nette\Application\LinkGenerator $linkGenerator,
 		array $params = []
 	) {
-		$this->config = $config;
+		$this->configService = $configService;
 		$this->mailer = $mailer;
 		$this->translator = $translator;
 		$this->linkGenerator = $linkGenerator;
@@ -131,9 +131,9 @@ abstract class Mail
 
 	private function setDefaultParams(): void
 	{
-		$this->params['defaultFrom'] = $this->config['mail']['defaultFrom'] ?? null;
-		$this->params['defaultFromName'] = $this->config['mail']['defaultFromName'] ?? null;
-		$this->params['domainUrl'] = $this->config['domainUrl'] ?? null;
+		$this->params['defaultFrom'] = $this->configService->getConfigByKey('mail', 'defaultFrom');
+		$this->params['defaultFromName'] = $this->configService->getConfigByKey('mail', 'defaultFromName');
+		$this->params['domainUrl'] = $this->configService->getConfigByKey('domainUrl');
 	}
 
 

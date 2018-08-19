@@ -65,7 +65,8 @@ http:
 			- strict-dynamic
 		style-src:
 			- self
-			- nonce
+			- unsafe-inline
+			- https://fonts.googleapis.com
 		img-src:
 			- self
 			- "data:"
@@ -75,7 +76,6 @@ http:
 			- none
 		font-src:
 			- self
-			- https://fonts.googleapis.com
 			- https://fonts.gstatic.com
 		connect-src:
 			- self
@@ -117,7 +117,10 @@ services:
 	- \Dh\Forms\FormFactory
 
 	# Mail factory
-	- \Dh\Mail\MailFactory(%config%)
+	- \Dh\Mail\MailFactory
+
+	# Config service
+	- \Dh\Config\ConfigService(%config%)
 
 includes:
 	- ../CoreModule/core.neon

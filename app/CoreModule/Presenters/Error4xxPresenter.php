@@ -11,11 +11,17 @@ final class Error4xxPresenter extends \App\CoreModule\Presenters\BasePresenter
 	 */
 	private $logger;
 
+	/**
+	 * @var \Dh\Config\IConfigService
+	 */
+	private $configService;
 
-	public function __construct(\Tracy\ILogger $logger)
+
+	public function __construct(\Tracy\ILogger $logger, \Dh\Config\IConfigService $configService)
 	{
 		parent::__construct();
 		$this->logger = $logger;
+		$this->configService = $configService;
 	}
 
 
@@ -51,5 +57,6 @@ final class Error4xxPresenter extends \App\CoreModule\Presenters\BasePresenter
 	public function renderDefault(\Nette\Application\BadRequestException $exception): void
 	{
 		$this->getTemplate()->add('code', $exception->getCode());
+		$this->getTemplate()->add('domainUrl', $this->configService->getConfigByKey('domainUrl'));
 	}
 }

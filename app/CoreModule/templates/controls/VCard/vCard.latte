@@ -1,0 +1,44 @@
+<div id="v-card-holder" class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="v-card card">
+					<div class="profile right">
+						<img alt="{='vCard.profilePictureAlt'|translate}" class="img-responsive"
+							 src="/img/profile.jpg">
+						<div class="slant"></div>
+					</div>
+
+					<div class="card-content">
+						<div class="info-headings">
+							<h4 class="left">{='common.author'|translate}</h4>
+							<h6 class="left">{='common.briefDescription'|translate}</h6>
+						</div>
+
+						<div n:if="$infos" class="infos">
+							<ul class="profile-list">
+								<li n:foreach="$infos as $info" class="clearfix">
+									<span class="title"><i class="material-icons">{$info->getIcon()}</i></span>
+									<span class="content">
+										{var $rel = \preg_match('~https?\:\/\/~', (string) $info->getLink())}
+										<a n:tag-if="$info->getLink()" href="{$info->getLink()}" class="no-decoration"
+										   {if $rel} rel="noopener noreferrer" target="_blank"{/if}>
+											{$info->getContent()}
+										</a>
+									</span>
+								</li>
+							</ul>
+						</div>
+
+						<div n:if="$links" n:inner-foreach="$links as $link" class="links">
+							<a href="{$link->getLink()}" target="_blank" rel="noopener noreferrer"
+							   n:class="$iterator->isFirst() ? first_one, social, btn-floating, $link->getClass() ? $link->getClass()">
+								<i n:class="fa, $link->getIcon()"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

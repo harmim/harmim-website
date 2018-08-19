@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 
 /**
- * @param string $lang
+ * @param string $locale
  */
 
 
@@ -27,17 +27,32 @@ $messages = [
 	],
 ];
 
-$lang = isset($lang) && \in_array($lang, \array_keys($messages), true) ? $lang : 'cs';
-$message = $messages[$lang];
+$locale = isset($locale) && \in_array($locale, \array_keys($messages), true) ? $locale : 'cs';
+$message = $messages[$locale];
+
+$csp = null;
+$cspName = 'Content-Security-Policy:';
+$cspNameLen = \strlen($cspName);
+foreach (\headers_list() as $header) {
+	if (\strncasecmp($header, $cspName, $cspNameLen) === 0) {
+		$csp = \ltrim(\substr($header, $cspNameLen));
+		break;
+	}
+}
+$nonce = \preg_match("~\s'nonce-([^']+)'~", (string) $csp, $matches) ? $matches[1] : null;
 
 ?>
 
-<!DOCTYPE html><!-- "' --></textarea></script></style></pre></xmp></a></audio></button></canvas></datalist></details></dialog></iframe></listing></meter></noembed></noframes></noscript></optgroup></option></progress></rp></select></table></template></title></video>
+<!DOCTYPE html>
+<!-- "' -->
+</textarea></script></style></pre></xmp></a></audio></button></canvas></datalist></details></dialog></iframe>
+</listing></meter></noembed></noframes></noscript></optgroup></option></progress></rp></select></table></template>
+</title></video>
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <title><?= $message['title']; ?></title>
 
-<style>
+<style<?php if ($nonce) echo " nonce=\"$nonce\""; ?>>
 	#error-500 {
 		all: initial; position: absolute; top: 0; left: 0; right: 0; height: 70vh; min-height: 400px; display: flex;
 		align-items: center; justify-content: center; z-index: 1000;
@@ -57,6 +72,6 @@ $message = $messages[$lang];
 	</div>
 </div>
 
-<script>
+<script<?php if ($nonce) echo " nonce=\"$nonce\""; ?>>
 	document.body.insertBefore(document.getElementById('error-500'), document.body.firstChild);
 </script>

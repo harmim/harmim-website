@@ -9,9 +9,9 @@ final class MailFactory implements \Dh\Mail\IMailFactory
 	use \Nette\SmartObject;
 
 	/**
-	 * @var array
+	 * @var \Dh\Config\IConfigService
 	 */
-	private $config;
+	private $configService;
 
 	/**
 	 * @var \Nette\Mail\IMailer
@@ -35,13 +35,13 @@ final class MailFactory implements \Dh\Mail\IMailFactory
 
 
 	public function __construct(
-		array $config,
+		\Dh\Config\IConfigService $configService,
 		\Nette\Mail\IMailer $mailer,
 		\Nette\Application\UI\ITemplateFactory $templateFactory,
 		\Kdyby\Translation\ITranslator $translator,
 		\Nette\Application\LinkGenerator $linkGenerator
 	) {
-		$this->config = $config;
+		$this->configService = $configService;
 		$this->mailer = $mailer;
 		$this->templateFactory = $templateFactory;
 		$this->translator = $translator;
@@ -59,7 +59,7 @@ final class MailFactory implements \Dh\Mail\IMailFactory
 		}
 
 		$mail = new $type(
-			$this->config,
+			$this->configService,
 			$this->mailer,
 			$this->templateFactory,
 			$this->translator,

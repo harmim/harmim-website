@@ -1,34 +1,147 @@
 parameters:
-	header:
-		homepage:
+	config:
+		header:
+			homepage:
+				-
+					id: common.section.home
+					name: header.home
+					icon: fa-user
+				-
+					id: common.section.about
+					name: header.about
+					icon: fa-dashboard
+				-
+					id: common.section.education
+					name: header.education
+					icon: fa-graduation-cap
+				-
+					id: common.section.skills
+					name: header.skills
+					icon: fa-sliders
+				-
+					id: common.section.experience
+					name: header.experience
+					icon: fa-suitcase
+				-
+					id: common.section.interest
+					name: header.interest
+					icon: fa-heart
+				-
+					id: common.section.contact
+					name: header.contact
+					icon: fa-envelope
+
+		vCard:
+			infos:
+				-
+					icon: email
+					link: mailto:harmim6@gmail.com
+					content: harmim6@gmail.com
+				-
+					icon: email
+					link: mailto:dominik.harmim@peckadesign.cz
+					content: dominik.harmim@peckadesign.cz
+				-
+					icon: email
+					link: mailto:Dominik.Harmim@vut.cz
+					content: Dominik.Harmim@vut.cz
+				-
+					icon: language
+					link: %config.domainUrl%
+					content: www.harmim.cz
+				-
+					icon: phone
+					content: +420 773 001 653
+			links:
+				-
+					link: https://github.com/harmim
+					class: black
+					icon: fa-github
+				-
+					link: https://www.linkedin.com/in/dominik-harmim
+					class: blue darken-3
+					icon: fa-linkedin
+				-
+					link: https://www.facebook.com/Dominik.Harmim
+					class: indigo
+					icon: fa-facebook
+				-
+					link: https://twitter.com/harmim6
+					class: blue
+					icon: fa-twitter
+				-
+					link: https://www.instagram.com/harmim6
+					class: purple lighten-2
+					icon: fa-instagram
+				-
+					link: https://plus.google.com/u/0/109550570501236735874
+					class: red
+					icon: fa-google-plus
+
+		skills:
 			-
-				id: common.section.home
-				name: header.home
-				icon: fa-user
+				title: Programovací jazyky
+				skills:
+					-
+						title: PHP
+						percentage: 100
+					-
+						title: C
+						percentage: 70
+					-
+						title: Java
+						percentage: 40
+					-
+						title: JavaScript
+						percentage: 40
+					-
+						title: C#
+						percentage: 30
+					-
+						title: Python
+						percentage: 28
+					-
+						title: C++
+						percentage: 25
 			-
-				id: common.section.about
-				name: header.about
-				icon: fa-dashboard
+				title: Webové technologie
+				skills:
+					-
+						title: Nette Framework
+						percentage: 100
+					-
+						title: HTML 5
+						percentage: 80
+					-
+						title: Composer
+						percentage: 75
+					-
+						title: Doctrine
+						percentage: 70
+					-
+						title: jQuery
+						percentage: 65
+					-
+						title: Symfony
+						percentage: 60
+					-
+						title: AJAX
+						percentage: 50
+					-
+						title: CSS 3
+						percentage: 40
 			-
-				id: common.section.education
-				name: header.education
-				icon: fa-graduation-cap
-			-
-				id: common.section.skills
-				name: header.skills
-				icon: fa-sliders
-			-
-				id: common.section.experience
-				name: header.experience
-				icon: fa-suitcase
-			-
-				id: common.section.interest
-				name: header.interest
-				icon: fa-heart
-			-
-				id: common.section.contact
-				name: header.contact
-				icon: fa-envelope
+				title: Další technologie a nástroje
+				skills:
+					-
+						title: Git
+						percentage: 100
+					-
+						title: "SQL (MySQL)"
+						percentage: 90
+					-
+						title: Unix
+						percentage: 80
 
 services:
 	# Router
@@ -39,7 +152,13 @@ services:
 		implement: \App\CoreModule\Controls\Head\IHeadControlFactory
 		class: \App\CoreModule\Controls\Head\HeadControl(%isProductionDomain%, %wwwDir%)
 	- \App\CoreModule\Controls\PreLoader\IPreLoaderControlFactory
-	- \App\CoreModule\Controls\Header\IHeaderControlFactory
-	- \App\CoreModule\Controls\Header\Homepage\HomepageHeaderControlFactory(%header.homepage%)
 	- \App\CoreModule\Controls\ScrollToTop\IScrollToTopControlFactory
 	- \App\CoreModule\Controls\Footer\IFooterControlFactory
+	- \App\CoreModule\Controls\Header\IHeaderControlFactory
+	-
+		implement: \App\CoreModule\Controls\VCard\IVCardControlFactory
+		class: \App\CoreModule\Controls\VCard\VCardControl(%config.vCard.infos%, %config.vCard.links%)
+	- \App\CoreModule\Controls\About\IAboutControlFactory
+	-
+		implement: \App\CoreModule\Controls\Skills\ISkillsControlFactory
+		class: \App\CoreModule\Controls\Skills\SkillsControl(%config.skills%)

@@ -1,0 +1,13 @@
+text: """
+Rád sportuji, abych si trochu odpočinul od toho programování. Pravidelně chodím do posilovny,
+běhat, na kolo, na workout, atd. Při práci i při sportu rád poslouchám hudbu. Rád hraji
+počítačové hry, když na to mám čas.
+"""
+
+interests:
+	sport: "Sport"
+	cycling: "Cyklistika"
+	traveling: "Cestování"
+	videoGames: "Video hry"
+	music: "Hudba"
+	movies: "Filmy"

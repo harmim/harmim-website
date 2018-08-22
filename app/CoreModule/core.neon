@@ -143,6 +143,26 @@ parameters:
 						title: Unix
 						percentage: 80
 
+		interests:
+			-
+				interest: interests.interests.sport
+				materialIcon: fitness_center
+			-
+				interest: interests.interests.cycling
+				faIcon: fa-bicycle
+			-
+				interest: interests.interests.traveling
+				faIcon: fa-plane
+			-
+				interest: interests.interests.videoGames
+				faIcon: fa-gamepad
+			-
+				interest: interests.interests.music
+				faIcon: fa-music
+			-
+				interest: interests.interests.movies
+				faIcon: fa-film
+
 services:
 	# Router
 	router: \App\CoreModule\Model\Router\RouterFactory::createRouter
@@ -162,3 +182,6 @@ services:
 	-
 		implement: \App\CoreModule\Controls\Skills\ISkillsControlFactory
 		class: \App\CoreModule\Controls\Skills\SkillsControl(%config.skills%)
+	-
+		implement: \App\CoreModule\Controls\Interests\IInterestsControlFactory
+		class: \App\CoreModule\Controls\Interests\InterestsControl(%config.interests%)

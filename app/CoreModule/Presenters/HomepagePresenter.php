@@ -31,13 +31,19 @@ final class HomepagePresenter extends \App\CoreModule\Presenters\BasePresenter
 	 */
 	private $skillsControlFactory;
 
+	/**
+	 * @var \App\CoreModule\Controls\Interests\IInterestsControlFactory
+	 */
+	private $interestsControlFactory;
+
 
 	public function __construct(
 		\Dh\Config\IConfigService $configService,
 		\App\CoreModule\Controls\Header\IHeaderControlFactory $headerControlFactory,
 		\App\CoreModule\Controls\About\IAboutControlFactory $aboutControlFactory,
 		\App\CoreModule\Controls\VCard\IVCardControlFactory $vCardControlFactory,
-		\App\CoreModule\Controls\Skills\ISkillsControlFactory $skillsControlFactory
+		\App\CoreModule\Controls\Skills\ISkillsControlFactory $skillsControlFactory,
+		\App\CoreModule\Controls\Interests\IInterestsControlFactory $interestsControlFactory
 	) {
 		parent::__construct();
 		$this->configService = $configService;
@@ -45,6 +51,7 @@ final class HomepagePresenter extends \App\CoreModule\Presenters\BasePresenter
 		$this->aboutControlFactory = $aboutControlFactory;
 		$this->vCardControlFactory = $vCardControlFactory;
 		$this->skillsControlFactory = $skillsControlFactory;
+		$this->interestsControlFactory = $interestsControlFactory;
 	}
 
 
@@ -69,5 +76,11 @@ final class HomepagePresenter extends \App\CoreModule\Presenters\BasePresenter
 	protected function createComponentSkills(): \App\CoreModule\Controls\Skills\SkillsControl
 	{
 		return $this->skillsControlFactory->create();
+	}
+
+
+	protected function createComponentInterests(): \App\CoreModule\Controls\Interests\InterestsControl
+	{
+		return $this->interestsControlFactory->create();
 	}
 }

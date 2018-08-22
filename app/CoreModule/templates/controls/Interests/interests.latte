@@ -1,0 +1,28 @@
+<section id="{='common.section.interest'|translate}" class="interest section">
+	<div class="container">
+		<div class="section-title">
+			<h4 class="text-uppercase text-center"><img src="/img/icons/heart.png" alt="{='header.interest'|translate}">
+				{='header.interest'|translate}
+			</h4>
+		</div>
+
+		<div class="interest-card card">
+			<div class="card-content">
+				<p>{='interests.text'|translate}</p>
+			</div>
+
+			<div n:if="$interests" class="row no-gutters">
+				<div n:foreach="$interests as $interest" class="col-md-2 col-sm-4 col-xs-6 box text-center">
+					<div n:class="$iterator->isOdd() ? interest-icon, $iterator->isEven() ? interest-icon-even">
+						{if $interest->getFaIcon()}
+							<i n:class="fa, $interest->getFaIcon()"></i>
+						{elseif $interest->getMaterialIcon()}
+							<i n:class="material-icons, $interest->getMaterialIcon()">{$interest->getMaterialIcon()}</i>
+						{/if}
+						<span>{$interest->getInterest()}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

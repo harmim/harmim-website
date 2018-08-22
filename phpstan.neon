@@ -1,0 +1,11 @@
+parameters:
+	tempDir: temp/phpstan-cache
+	level: max
+	paths:
+		- app
+		- libs
+		- tools
+		- www
+	autoload_files:
+		- tools/deploy.inc
+		- vendor/autoload.php

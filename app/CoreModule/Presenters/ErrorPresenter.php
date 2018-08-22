@@ -29,7 +29,7 @@ final class ErrorPresenter implements \Nette\Application\IPresenter
 	public function run(\Nette\Application\Request $request): \Nette\Application\IResponse
 	{
 		$exception = $request->getParameter('exception');
-		$locale = $this->getLang();
+		$locale = $this->getLocale();
 
 		if ($exception instanceof \Nette\Application\BadRequestException) {
 			$request->setParameters($request->getParameters() + [
@@ -46,13 +46,18 @@ final class ErrorPresenter implements \Nette\Application\IPresenter
 			\Nette\Http\IResponse $httpResponse
 		) use ($locale): void {
 			if (\preg_match('~^text/html(?:;|$)~', (string) $httpResponse->getHeader('Content-Type'))) {
+				$templateVariables = [
+					'locale' => $locale,
+				];
+				\extract($templateVariables);
+
 				require __DIR__ . '/../templates/Error500/default.phtml';
 			}
 		});
 	}
 
 
-	private function getLang(): string
+	private function getLocale(): string
 	{
 		if (\preg_match('~^\/(cs|en)\/?~', $this->httpRequest->getUrl()->getPath(), $matches)) {
 			return $matches[1];

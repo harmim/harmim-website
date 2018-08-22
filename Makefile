@@ -1,10 +1,10 @@
 # Author: Dominik Harmim <harmim6@gmail.com>
 
-PRODUCTION = 0
-FIX = 0
-TEST = 0
+PRODUCTION := 0
+FIX := 0
+TEST := 0
 
-TEMP_DIR = temp
+TEMP_DIR := temp
 CODE_CHECKER_DIR := $(TEMP_DIR)/code-checker
 CODING_STANDARD_DIR := $(TEMP_DIR)/coding-standard
 PHPSTAN_DIR := $(TEMP_DIR)/phpstan
@@ -56,7 +56,7 @@ code-checker: code-checker-install code-checker-run
 .PHONY: code-checker-install
 code-checker-install:
 ifeq ($(wildcard $(CODE_CHECKER_DIR)/.), )
-	composer create-project nette/code-checker $(CODE_CHECKER_DIR) ^3.0 --no-interaction --no-progress
+	composer create-project nette/code-checker $(CODE_CHECKER_DIR) --no-interaction --no-progress --no-dev
 endif
 
 .PHONY: code-checker-run
@@ -74,7 +74,7 @@ coding-standard: coding-standard-install coding-standard-run
 .PHONY: coding-standard-install
 coding-standard-install:
 ifeq ($(wildcard $(CODING_STANDARD_DIR)/.), )
-	composer create-project nette/coding-standard $(CODING_STANDARD_DIR) ^0.8 --no-interaction --no-progress
+	composer create-project nette/coding-standard $(CODING_STANDARD_DIR) --no-interaction --no-progress --no-dev
 endif
 
 .PHONY: coding-standard-run
@@ -92,12 +92,12 @@ phpstan: phpstan-install phpstan-run
 .PHONY: phpstan-install
 phpstan-install: composer
 ifeq ($(wildcard $(PHPSTAN_DIR)/.), )
-	composer create-project phpstan/phpstan-shim $(PHPSTAN_DIR) --no-interaction --no-progress
+	composer create-project phpstan/phpstan-shim $(PHPSTAN_DIR) --no-interaction --no-progress --no-dev
 endif
 
 .PHONY: phpstan-run
 phpstan-run:
-	php $(PHPSTAN_DIR)/phpstan.phar analyse --autoload-file vendor/autoload.php --level max app libs
+	./$(PHPSTAN_DIR)/phpstan analyse -c phpstan.neon
 
 
 .PHONY: deploy

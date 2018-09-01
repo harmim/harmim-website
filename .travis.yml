@@ -1,3 +1,8 @@
+language: php
+
+php:
+    - 7.2
+
 jobs:
     include:
         - stage: Coding Standard

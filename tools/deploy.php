@@ -18,7 +18,6 @@ if ($argc > 1) {
 	$options = \implode(' ', $argv);
 }
 
-
 try {
 	\doProcess('make PRODUCTION=1', $rootDir, 'Make production');
 

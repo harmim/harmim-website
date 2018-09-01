@@ -80,7 +80,7 @@ parameters:
 
 		skills:
 			-
-				title: Programovací jazyky
+				title: skills.title.1
 				skills:
 					-
 						title: PHP
@@ -104,7 +104,7 @@ parameters:
 						title: C++
 						percentage: 25
 			-
-				title: Webové technologie
+				title: skills.title.2
 				skills:
 					-
 						title: Nette Framework
@@ -131,7 +131,7 @@ parameters:
 						title: CSS 3
 						percentage: 40
 			-
-				title: Další technologie a nástroje
+				title: skills.title.3
 				skills:
 					-
 						title: Git
@@ -142,6 +142,16 @@ parameters:
 					-
 						title: Unix
 						percentage: 80
+
+		experience:
+			-
+				dot: experience.dot.1
+				title: experience.title.1
+				link:
+					link: experience.link.link.1
+					title: experience.link.title.1
+				date: experience.date.1
+				content: experience.content.1
 
 		interests:
 			-

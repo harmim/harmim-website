@@ -11,7 +11,7 @@ PHPSTAN_DIR := $(TEMP_DIR)/phpstan
 
 
 .PHONY: install
-install: composer npm bower grunt
+install: composer assets
 
 
 .PHONY: composer
@@ -21,6 +21,10 @@ ifeq ($(PRODUCTION), 0)
 else
 	composer install --no-interaction --no-progress --no-dev
 endif
+
+
+.PHONY: assets
+assets: npm bower grunt
 
 
 .PHONY: npm

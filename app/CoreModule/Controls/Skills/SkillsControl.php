@@ -34,7 +34,7 @@ final class SkillsControl extends \Dh\Application\UI\BaseControl
 		$skillGroups = [];
 		foreach ($this->skills as $skillGroup) {
 			$skillGroups[] = new \App\CoreModule\Model\Skills\SkillGroup(
-				$skillGroup['title'],
+				$this->translator->translate($skillGroup['title']),
 				$this->getSkills($skillGroup['skills'])
 			);
 		}

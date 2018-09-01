@@ -1,0 +1,22 @@
+dot:
+	1: "P"
+
+title:
+	1: "PHP vývojář"
+
+link:
+	link:
+		1: "https://www.peckadesign.cz"
+
+	title:
+		1: "PeckaDesign"
+
+date:
+	1: "Červen 2015 - Současnost"
+
+content:
+	1: """
+PHP vývojář ve firmě PeckaDesign, tvorba velých českých e-shopů.
+Programování back-endu v PHP7, Nette Framework, práce s MySQL, Doctrine, Dibi,
+Git, GitHub, testování, atp.
+"""

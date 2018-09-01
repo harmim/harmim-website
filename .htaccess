@@ -1,11 +1,9 @@
 Allow from all
 
-
 # disable directory listing
 <IfModule mod_autoindex.c>
 	Options -Indexes
 </IfModule>
-
 
 # enable cool URL
 <IfModule mod_rewrite.c>
@@ -25,13 +23,11 @@ Allow from all
 	# redirect to http www domain
 	RewriteCond %{HTTPS} off
 	RewriteCond %{HTTP_HOST} !^www\.
-	RewriteCond %{HTTP_HOST} !\.localhost\.
 	RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,QSA,L]
 
 	# redirect to https www domain
 	RewriteCond %{HTTPS} on
 	RewriteCond %{HTTP_HOST} !^www\.
-	RewriteCond %{HTTP_HOST} !\.localhost\.
 	RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,QSA,L]
 
 	# redirect to http
@@ -56,14 +52,12 @@ Allow from all
 	RewriteRule !\.(html|pdf|js|ico|gif|jpg|jpeg|png|swf|wav|css|rar|zip|tar\.gz|map|woff|woff2|eot|ttf|txt)$ index.php [QSA,L]
 </IfModule>
 
-
 # enable gzip compression
 <IfModule mod_deflate.c>
 	<IfModule mod_filter.c>
 		AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/x-javascript text/javascript application/json application/xml image/svg+xml
 	</IfModule>
 </IfModule>
-
 
 <IfModule mod_headers.c>
 	# 1 YEAR
@@ -81,7 +75,6 @@ Allow from all
 		Header set Cache-Control "max-age=172800, proxy-revalidate"
 	</FilesMatch>
 </IfModule>
-
 
 <IfModule mod_expires.c>
 	ExpiresActive on

@@ -21,24 +21,19 @@ Allow from all
 	RewriteRule /\.|^\.(?!well-known/) - [F]
 
 	# redirect to http www domain
-	RewriteCond %{HTTPS} off
 	RewriteCond %{HTTP_HOST} !^www\.
+	RewriteCond %{HTTPS} off
 	RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,QSA,L]
 
 	# redirect to https www domain
-	RewriteCond %{HTTPS} on
 	RewriteCond %{HTTP_HOST} !^www\.
+	RewriteCond %{HTTPS} on
 	RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,QSA,L]
 
-	# redirect to http
-	RewriteCond %{HTTPS} on
+	# redirect to http on production
 	RewriteCond %{HTTP_HOST} !\.localhost\.
+	RewriteCond %{HTTPS} on
 	RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1 [R=301,QSA,L]
-
-	# redirect to https
-	RewriteCond %{HTTPS} off
-	RewriteCond %{HTTP_HOST} \.localhost\.
-	RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,QSA,L]
 
 	# remove slash from the end of URL
 	RewriteCond %{REQUEST_URI} /$

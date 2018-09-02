@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+    web:
+        build: ./docker/php
+        ports:
+            - 80
+            - 443
+        volumes:
+            - ./:/var/www/html
+
+    composer:
+        build: ./docker/php
+        command: make composer PRODUCTION=1
+        volumes:
+            - ./:/var/www/html
+
+    assets:
+        image: node:latest
+        command: make assets PRODUCTION=1
+        volumes:
+            - ./:/app
+        working_dir: /app

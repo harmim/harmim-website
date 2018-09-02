@@ -39,9 +39,9 @@ endif
 .PHONY: bower
 bower:
 ifeq ($(PRODUCTION), 0)
-	./node_modules/bower/bin/bower install
+	./node_modules/bower/bin/bower install --allow-root
 else
-	./node_modules/bower/bin/bower install --production
+	./node_modules/bower/bin/bower install --allow-root --production
 endif
 
 

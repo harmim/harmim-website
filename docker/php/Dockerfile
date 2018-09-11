@@ -4,7 +4,11 @@ RUN a2enmod rewrite
 RUN a2enmod ssl
 
 RUN apt-get update -y
-RUN apt-get install -y git
+RUN apt-get install -y \
+	git \
+	wget \
+	zip \
+	unzip
 RUN apt-get clean -y
 
 RUN pecl install xdebug

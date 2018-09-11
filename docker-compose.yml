@@ -9,15 +9,9 @@ services:
         volumes:
             - ./:/var/www/html
 
-    composer:
-        build: ./docker/php
-        command: make composer PRODUCTION=1
-        volumes:
-            - ./:/var/www/html
-
-    assets:
+    node:
         image: node:latest
-        command: make assets PRODUCTION=1
+        command: tail -f /dev/null
         volumes:
             - ./:/app
         working_dir: /app

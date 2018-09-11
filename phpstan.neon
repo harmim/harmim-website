@@ -4,8 +4,12 @@ parameters:
 	paths:
 		- app
 		- libs
+		- tests
 		- tools
 		- www
 	autoload_files:
+		- tests/bootstrap.inc
 		- tools/deploy.inc
 		- vendor/autoload.php
+	ignoreErrors:
+		- '#Constant TEMP_DIR not found.#'

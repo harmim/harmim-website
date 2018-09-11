@@ -1,7 +1,11 @@
 language: php
 
-php:
-    - 7.2
+services:
+    - docker
+
+before_install:
+    - make travis-download-docker-compose
+    - rm docker-compose.override.yml
 
 jobs:
     include:
@@ -19,7 +23,17 @@ jobs:
           script:
               - make phpstan-run
 
-sudo: false
+        - stage: Tests
+          install:
+              - travis_retry make coverage-install
+          script:
+              - make coverage-run
+          after_failure:
+              - make tests-print
+          after_script:
+              - travis_retry make coverage-publish TRAVIS=1
+
+sudo: required
 
 cache:
     directories:

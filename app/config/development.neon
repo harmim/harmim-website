@@ -4,7 +4,7 @@ http:
 
 parameters:
 	config:
-		domainUrl: https://harmim.localhost.com
+		domainUrl: https://www.harmim.localhost.com
 
 services:
 	nette.mailer: \Dh\Mail\LogMailer(%logDir%)

@@ -5,24 +5,13 @@ services:
         volumes:
             - ./:/var/www/html:cached
             - ./docker/apache/localhost:/etc/apache2/sites-enabled
-            - ~/ngiinx-proxy/certs:/etc/apache2/ssl
+            - ~/nginx-proxy/certs:/etc/apache2/ssl
             - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
         environment:
             VIRTUAL_HOST: www.harmim.localhost.com
             PHP_IDE_CONFIG: serverName=www.harmim.localhost.com
             DH_DEBUG: 1
             XDEBUG_CONFIG: remote_host=docker.for.mac.localhost
-
-    composer:
-        command: make composer
-        environment:
-            # https://github.com/settings/tokens/new?scopes=repo&description=COMPOSER_AUTH_TOKEN
-            COMPOSER_AUTH: '{"github-oauth": {"github.com": "$COMPOSER_AUTH_TOKEN"}}'
-        volumes:
-            - ~/.composer/cache:/root/.composer/cache
-
-    assets:
-        command: make assets
 
 networks:
     default:

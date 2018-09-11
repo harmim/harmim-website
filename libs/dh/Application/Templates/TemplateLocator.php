@@ -26,13 +26,18 @@ final class TemplateLocator implements \Dh\Application\Templates\ITemplateLocato
 	}
 
 
+	/**
+	 * @throws \InvalidArgumentException
+	 */
 	public function formatViewTemplate(string $presenterName, string $view): array
 	{
-		$part = \explode(':', $presenterName);
+		if (!\preg_match('~^([[:alnum:]]+):([[:alnum:]]+)\z~', $presenterName, $presenterNameMatches)) {
+			throw new \InvalidArgumentException("Invalid presenter name: $presenterName.");
+		}
 
 		$paths = [];
-		$paths[] = "/$part[0]Module/Presenters/$view.latte";
-		$paths[] = "/$part[0]Module/templates/$part[1]/$view.latte";
+		$paths[] = "/$presenterNameMatches[1]Module/Presenters/$view.latte";
+		$paths[] = "/$presenterNameMatches[1]Module/templates/$presenterNameMatches[2]/$view.latte";
 
 		$list = [];
 		foreach ($this->dirs as $dir) {
@@ -45,19 +50,24 @@ final class TemplateLocator implements \Dh\Application\Templates\ITemplateLocato
 	}
 
 
+	/**
+	 * @throws \InvalidArgumentException
+	 */
 	public function formatLayoutTemplate(string $presenterName, string $layout = ''): array
 	{
 		if ($layout && \is_readable($layout)) {
 			return [$layout];
 		}
 
+		if (!\preg_match('~^([[:alnum:]]+):([[:alnum:]]+)\z~', $presenterName, $presenterNameMatches)) {
+			throw new \InvalidArgumentException("Invalid presenter name: $presenterName.");
+		}
 		$layout = $layout ?: 'layout';
-		$part = \explode(':', $presenterName);
 
 		$paths = [];
-		$paths[] = "/$part[0]Module/templates/$part[1]/@$layout.latte";
-		$paths[] = "/$part[0]Module/templates/@$layout.latte";
-		if ($part[0] !== $this->defaultModuleWithLayout) {
+		$paths[] = "/$presenterNameMatches[1]Module/templates/$presenterNameMatches[2]/@$layout.latte";
+		$paths[] = "/$presenterNameMatches[1]Module/templates/@$layout.latte";
+		if ($presenterNameMatches[1] !== $this->defaultModuleWithLayout) {
 			$paths[] = "/{$this->defaultModuleWithLayout}Module/templates/@$layout.latte";
 		}
 

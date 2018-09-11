@@ -6,4 +6,6 @@
 /log/*
 !.htaccess
 
-/docker-compose.override.yml
+/coverage.xml
+/coverage.json
+/php-coveralls.phar

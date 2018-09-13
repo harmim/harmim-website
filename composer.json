@@ -28,7 +28,7 @@
 		"dg/ftp-deployment": "~3.0.1"
 	},
 	"require-dev": {
-		"nette/tester": "^2.0"
+		"nette/tester": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {

@@ -1,3 +1,6 @@
 /**/output/
 /temp/
 /.coveralls-local.yml
+/coverage.xml
+/coverage.json
+/php-coveralls.phar

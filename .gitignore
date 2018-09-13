@@ -5,7 +5,3 @@
 /temp/*
 /log/*
 !.htaccess
-
-/coverage.xml
-/coverage.json
-/php-coveralls.phar

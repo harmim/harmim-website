@@ -149,12 +149,11 @@ coverage-install: composer
 
 .PHONY: coverage-run
 coverage-run: docker-compose-web
-	# -s -p phpdbg --coverage coverage.xml --coverage-src $(APP_DIR) --coverage-src $(LIBS_DIR)
 	$(DOCKER_WEB) ./$(COMPOSER_BIN_DIR)/tester $(TESTS_DIR) \
-		-s -p phpdbg --coverage coverage.xml --coverage-src $(LIBS_DIR)
+		-s -p phpdbg --coverage $(TESTS_DIR)/coverage.xml --coverage-src $(APP_DIR) --coverage-src $(LIBS_DIR)
 
 .PHONY: coverage-publish
-coverage-publish: php-coveralls.phar docker-compose-web
+coverage-publish: $(TESTS_DIR)/php-coveralls.phar docker-compose-web
 ifeq ($(TRAVIS), 0)
 	docker-compose exec -e COVERALLS_RUN_LOCALLY=1 web \
 		php $< --verbose --config $(TESTS_DIR)/.coveralls-local.yml
@@ -163,8 +162,9 @@ else
 		php $< --verbose --config $(TESTS_DIR)/.coveralls-travis.yml
 endif
 
-php-coveralls.phar: docker-compose-web
-	$(DOCKER_WEB) wget -nc https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/$@
+$(TESTS_DIR)/php-coveralls.phar: docker-compose-web
+	$(DOCKER_WEB) wget -nc -P $(TESTS_DIR) \
+		https://github.com/php-coveralls/php-coveralls/releases/download/`$(call get_latest_github_release,php-coveralls/php-coveralls)`/php-coveralls.phar
 
 
 .PHONY: deploy
@@ -177,9 +177,13 @@ endif
 
 
 .PHONY: clean
-clean:
-	git clean -xdff $(LOG_DIR) $(NODE_DIR) $(TEMP_DIR) $(TESTS_DIR)/*/ $(TOOLS_DIR)/*.log $(VENDOR_DIR) $(WWW_DIR) \
+clean: clean-tests
+	git clean -xdff $(LOG_DIR) $(NODE_DIR) $(TEMP_DIR) $(TOOLS_DIR)/*.log $(VENDOR_DIR) $(WWW_DIR) \
 		`ls -Ap | grep -v '/'`
+
+.PHONY: clean-tests
+clean-tests:
+	git clean -xdff $(TESTS_DIR)/*/ $(TESTS_DIR)/coverage.* $(TESTS_DIR)/php-coveralls.phar
 
 .PHONY: clean-cache
 clean-cache:
@@ -203,6 +207,7 @@ travis-download-docker-compose:
 		> docker-compose
 	chmod +x docker-compose
 	sudo mv docker-compose /usr/local/bin
+
 
 define get_latest_github_release
 	curl --silent -L https://api.github.com/repos/$(1)/releases/latest \

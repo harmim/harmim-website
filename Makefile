@@ -20,6 +20,10 @@ CODE_CHECKER_DIR := $(TEMP_DIR)/code-checker
 CODING_STANDARD_DIR := $(TEMP_DIR)/coding-standard
 PHPSTAN_DIR := $(TEMP_DIR)/phpstan
 
+CODE_CHECKER_VERSION := ^3.0.0
+CODING_STANDARD_VERSION := ^2.0.0
+PHPSTAN_VERSION := ^0.10.3
+
 DOCKER_WEB := docker-compose exec web
 DOCKER_NODE := docker-compose exec node
 
@@ -74,15 +78,16 @@ code-checker: code-checker-install code-checker-run
 .PHONY: code-checker-install
 code-checker-install: docker-compose-web
 ifeq ($(wildcard $(CODE_CHECKER_DIR)/.), )
-	$(DOCKER_WEB) composer create-project nette/code-checker $(CODE_CHECKER_DIR) --no-interaction --no-progress --no-dev
+	$(DOCKER_WEB) composer create-project nette/code-checker $(CODE_CHECKER_DIR) $(CODE_CHECKER_VERSION) \
+		--no-interaction --no-progress --no-dev
 endif
 
 .PHONY: code-checker-run
 code-checker-run: docker-compose-web
 ifeq ($(FIX), 0)
-	$(DOCKER_WEB) ./$(CODE_CHECKER_DIR)/code-checker --strict-types -l -i $(WWW_DIR)
+	$(DOCKER_WEB) ./$(CODE_CHECKER_DIR)/code-checker --strict-types --eol --ignore $(WWW_DIR)
 else
-	$(DOCKER_WEB) ./$(CODE_CHECKER_DIR)/code-checker --strict-types -l -i $(WWW_DIR) -f
+	$(DOCKER_WEB) ./$(CODE_CHECKER_DIR)/code-checker --strict-types --eol --ignore $(WWW_DIR) --fix
 endif
 
 
@@ -92,7 +97,7 @@ coding-standard: coding-standard-install coding-standard-run
 .PHONY: coding-standard-install
 coding-standard-install: docker-compose-web
 ifeq ($(wildcard $(CODING_STANDARD_DIR)/.), )
-	$(DOCKER_WEB) composer create-project nette/coding-standard $(CODING_STANDARD_DIR) \
+	$(DOCKER_WEB) composer create-project nette/coding-standard $(CODING_STANDARD_DIR) $(CODING_STANDARD_VERSION) \
 		--no-interaction --no-progress --no-dev
 endif
 
@@ -100,10 +105,10 @@ endif
 coding-standard-run: docker-compose-web
 ifeq ($(FIX), 0)
 	$(DOCKER_WEB) ./$(CODING_STANDARD_DIR)/ecs check $(APP_DIR) $(LIBS_DIR) $(TESTS_DIR) $(TOOLS_DIR) \
-		--config $(CODING_STANDARD_DIR)/coding-standard-php71.neon
+		--config $(CODING_STANDARD_DIR)/coding-standard-php71.yml
 else
 	$(DOCKER_WEB) ./$(CODING_STANDARD_DIR)/ecs check $(APP_DIR) $(LIBS_DIR) $(TESTS_DIR) $(TOOLS_DIR) \
-		--config $(CODING_STANDARD_DIR)/coding-standard-php71.neon --fix
+		--config $(CODING_STANDARD_DIR)/coding-standard-php71.yml --fix
 endif
 
 
@@ -113,7 +118,8 @@ phpstan: phpstan-install phpstan-run
 .PHONY: phpstan-install
 phpstan-install: composer docker-compose-web
 ifeq ($(wildcard $(PHPSTAN_DIR)/.), )
-	$(DOCKER_WEB) composer create-project phpstan/phpstan-shim $(PHPSTAN_DIR) --no-interaction --no-progress --no-dev
+	$(DOCKER_WEB) composer create-project phpstan/phpstan-shim $(PHPSTAN_DIR) $(PHPSTAN_VERSION) \
+		--no-interaction --no-progress --no-dev
 endif
 
 .PHONY: phpstan-run

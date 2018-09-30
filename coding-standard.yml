@@ -1,0 +1,6 @@
+imports:
+    - { resource: 'temp/coding-standard/coding-standard-php71.yml' }
+
+parameters:
+    exclude_checkers:
+        - 'SlevomatCodingStandard\Sniffs\Commenting\RequireOneLinePropertyDocCommentSniff'

@@ -105,10 +105,10 @@ endif
 coding-standard-run: docker-compose-web
 ifeq ($(FIX), 0)
 	$(DOCKER_WEB) ./$(CODING_STANDARD_DIR)/ecs check $(APP_DIR) $(LIBS_DIR) $(TESTS_DIR) $(TOOLS_DIR) \
-		--config $(CODING_STANDARD_DIR)/coding-standard-php71.yml
+		--config coding-standard.yml
 else
 	$(DOCKER_WEB) ./$(CODING_STANDARD_DIR)/ecs check $(APP_DIR) $(LIBS_DIR) $(TESTS_DIR) $(TOOLS_DIR) \
-		--config $(CODING_STANDARD_DIR)/coding-standard-php71.yml --fix
+		--config coding-standard.yml --fix
 endif
 
 
